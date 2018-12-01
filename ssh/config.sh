@@ -2,7 +2,7 @@
 
 echo -e "[Check] \033[32mssh\033[0m already configured?"
 
-search=`ssh-add -l | grep "szhang.hust@gmail.com"`
+search=`cat $HOME/.ssh/id_rsa.pub | grep "szhang.hust@gmail.com"`
 
 if [ -z "$search" ]; then
     echo -e "Not Found.\n"
