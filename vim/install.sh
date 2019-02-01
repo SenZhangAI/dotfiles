@@ -16,5 +16,4 @@ case $OSTYPE in
         ;;
 esac
 
-
 # vim:st=4:sw=4
