@@ -16,21 +16,22 @@ case $OSTYPE in
 esac
 
 __cygwin_install() {
-    echo "Sorry, cygwin can not install [$1] automatically, Please install by cygwin installer"
+    echo "Sorry, cygwin can not install [$@] automatically, Please install by cygwin installer"
 }
 
 smart_install() {
-    $__INSTALL__ $1
+    $__INSTALL__ $@
 }
 
 command_not_installed() {
-    echo "Check if [$1] installed..."
+    printf "Check if [$1] installed..."
     found=$(which $1 2>/dev/null)
     if [ -z "$found" ]; then
-        echo -e "\t------- No"
+        printf "%-24s Not Installed\n"
         return 0
     else
-        echo -e "\t------- Yes"
+        printf "%-24s     Installed\n"
         return 1
     fi
 }
+
