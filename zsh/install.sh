@@ -10,7 +10,7 @@ fi
 
 echo -e "[Check] \033[32mzsh\033[0m configured by oh-my-zsh?"
 
-if [ -d "$ZSH" ]; then
+if [ -d "$HOME/.oh-my-zsh" ]; then
     echo -e "Configured.\n"
 else
     echo -e "Not Configured.\n"
