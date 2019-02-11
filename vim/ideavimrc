@@ -15,7 +15,7 @@ let mapleader=","
 " important! using :actionlist find out all actions
 
 " clear the highlighted search result
-nnoremap <Space> :nohlsearch<CR>
+nnoremap <Space>hh :nohlsearch<CR>
 
 " Quit insert mode
 inoremap jk <Esc>
@@ -33,5 +33,3 @@ nnoremap <right> gt
 " move line up and down
 nnoremap gk mz:m-2<cr>`z
 nnoremap gj mz:m+<cr>`z
-
-nnoremap <CR> :nohl<CR>
