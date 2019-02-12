@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+system_is() {
+  test=$(uname -a 2>/dev/null | grep -i $1)
+  if [ -z "$test" ]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
 ETC=$HOME/.local/etc
 BIN=$HOME/.local/bin
 mkdir -p $ETC
@@ -15,6 +24,14 @@ else
     cd dotfiles
 fi
 
+if [ ! -d bin ];then
+    mkdir -p bin
+fi
+
+if system_is cygwin;then
+    cp platform/cygwin/bin/* $BIN/
+fi
+
 cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
 cp bootstrap.sh $BIN/
@@ -23,3 +40,5 @@ cp bootstrap.sh $BIN/
 sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
 echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 source $HOME/.bashrc
+
+echo "done."
