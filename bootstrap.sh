@@ -11,7 +11,7 @@ if [ -d dotfiles ]; then
     cd dotfiles
     git pull
 else
-    git clone git@github.com:SenZhangAI/dotfiles.git
+    git clone https://github.com/SenZhangAI/dotfiles
     cd dotfiles
 fi
 
