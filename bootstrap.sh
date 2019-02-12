@@ -29,7 +29,7 @@ if [ ! -d bin ];then
 fi
 
 if system_is cygwin;then
-    cp platform/cygwin/bin/* $BIN/
+    cp platform/cygwin/bin/* bin/
 fi
 
 cp -rf etc/* $ETC/
