@@ -20,6 +20,6 @@ cp -rf bin/* $BIN/
 cp bootstrap.sh $BIN/
 
 # source init.sh, move to the end line
-sed -i "\:$ETC/bash/init.sh:d" $HOME/.bashrc
-echo ". $ETC/bash/init.sh" >> $HOME/.bashrc
+sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
+echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 source $HOME/.bashrc
