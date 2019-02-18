@@ -43,7 +43,7 @@ init_install_config() {
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
 
             pacman -Syyu
-            paman -Sy git
+            pacman -Sy git
             ;;
         *)
             echo "Error: system is not supported yet :("
