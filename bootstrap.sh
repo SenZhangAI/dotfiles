@@ -1,4 +1,4 @@
-#!/bin/bash -i
+#!/usr/bin/env bash
 
 init_install_config() {
     case $OSTYPE in
@@ -85,6 +85,5 @@ cp bootstrap.sh $BIN/
 # source init.sh, move to the end line
 sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
 echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
-source $HOME/.bashrc
 
 echo "done."
