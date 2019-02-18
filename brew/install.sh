@@ -1,29 +1,5 @@
 #!/usr/bin/env bash
 
-#install Homebrew
-
-if ! command -v brew >/dev/null 2>&1; then
-    printf "Brew is not installed! Install brew...\n"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-if ! command -v git >/dev/null 2>&1; then
-    printf "git is not installed! Install git...\n"
-    brew install git
-fi
-
-echo "Change mirrors for Homebrew"
-#see https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
-cd "$(brew --repo)"
-git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-
-#cd "$(brew --repo)" && git remote set-url origin https://git.coding.net/homebrew/homebrew.git
-
 # Install command-line tools using Homebrew.
 
 # Make sure we’re using the latest Homebrew.
