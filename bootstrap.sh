@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -i
 
 if [ -z $(which git 2>/dev/null) ]; then
     printf "\033[32mgit\033[0m need to be installed first!\n"
