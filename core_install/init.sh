@@ -35,7 +35,6 @@ case $SYSTEM in
         ;;
 
     msys2)
-        cp $base_dir/ideavimrc $HOME/.ideavimrc
         ;;
     *)
         echo "Error: system is not supported yet :("

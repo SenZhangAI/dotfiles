@@ -42,8 +42,10 @@ init_install_config() {
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64' > /etc/pacman.d/mirrorlist.mingw64
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
 
-            pacman -Syyu
-            pacman -Sy git
+            pacman -Syu
+            if [ -z $(which git 2>/dev/null) ]; then
+                pacman -Sy git
+            fi
             ;;
         *)
             echo "Error: system is not supported yet :("
