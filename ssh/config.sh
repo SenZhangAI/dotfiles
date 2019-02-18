@@ -2,7 +2,7 @@
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-source $base_dir/../utils.sh
+source $base_dir/../utils/smart_install.sh
 
 if command_not_installed ssh; then
     smart_install openssh
