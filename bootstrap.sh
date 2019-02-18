@@ -20,16 +20,15 @@ else
     cd dotfiles
 fi
 
-if [ ! -d bin ];then
-    mkdir -p bin
-fi
-
-if system_is cygwin;then
-    cp platform/cygwin/bin/* bin/
-fi
+source utils/platform.sh
 
 cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
+
+if system_is cygwin;then
+    cp bin/cygwin/* bin/
+fi
+
 cp bootstrap.sh $BIN/
 
 # source init.sh, move to the end line
