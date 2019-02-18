@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-system_is() {
-  test=$(uname -a 2>/dev/null | grep -i $1)
-  if [ -z "$test" ]; then
-    return 1
-  else
-    return 0
-  fi
-}
+if [ -z $(which git 2>/dev/null) ]; then
+    printf "\033[32mgit\033[0m need to be installed first!\n"
+    exit 233
+fi
 
 ETC=$HOME/.local/etc
 BIN=$HOME/.local/bin

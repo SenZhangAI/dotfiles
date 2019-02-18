@@ -8,6 +8,9 @@ case $OSTYPE in
     cygwin*)
         cp $base_dir/ideavimrc $(cygpath -w $USERPROFILE/.ideavimrc)
         ;;
+    msys*)
+        cp $base_dir/ideavimrc $USERPROFILE/.ideavimrc
+        ;;
     darwin*)
         cp $base_dir/ideavimrc $HOME/.ideavimrc
         ;;
