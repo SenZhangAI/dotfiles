@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+base_dir=$HOME/.local
+
+mkdir -p $base_dir/.tmp
+mkdir -p $base_dir/.bak
+if [ -f $base_dir/bin/apt-cyg ]; then
+    mv $base_dir/bin/apt-cyg $base_dir/.bak
+fi
+
+git clone https://github.com/transcode-open/apt-cyg.git $base_dir/.tmp
+cd $base_dir/.tmp
+install apt-cyg $base_dir/bin
+rm -rf $base_dir/.tmp
+# vim:ft=sh
