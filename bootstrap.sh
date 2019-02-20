@@ -71,10 +71,20 @@ else
     cd dotfiles
 fi
 
-source utils/platform.sh
-
 cp -rf etc/* $ETC/
-cp -rf bin/* $BIN/
+#cp all files in dotfiles/bin to $BIN
+for f in `find ./bin/ -type f`; do
+    cp $f $BIN/
+done
+
+system_is() {
+    test=$(uname -a 2>/dev/null | grep -i $1)
+    if [ -z "$test" ]; then
+        return 1
+    else
+        return 0
+    fi
+}
 
 if system_is cygwin;then
     cp bin/cygwin/* bin/
@@ -86,4 +96,5 @@ cp bootstrap.sh $BIN/
 sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
 echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 
-echo "done."
+echo "Install Successfully."
+
