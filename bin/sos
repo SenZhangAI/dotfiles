@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+printf  "%-45s \e[32;1m%-20s\e[0m\n" "Solarized Dark background color RGB" "0 43 54(0x002B36)"
+# vim:ft=sh
