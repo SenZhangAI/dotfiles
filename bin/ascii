@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+usage() {
+    printf 'Usage: ascii [-dxohv] [-t] [char-alias...]
+    -t = one-line output  -d = Decimal table  -o = octal table  -x = hex table
+    -h = This help screen -v = version information
+    Prints all aliases of an ASCII character. Args may be chars, C \-escapes,
+    English names, ^-escapes, ASCII mnemonics, or numerics in decimal/octal/hex.
+'
+}
+
+full_table() {
+    echo '
+Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex
+  0 00 NUL  16 10 DLE  32 20    48 30 0  64 40 @  80 50 P   96 60 `  112 70 p
+  1 01 SOH  17 11 DC1  33 21 !  49 31 1  65 41 A  81 51 Q   97 61 a  113 71 q
+  2 02 STX  18 12 DC2  34 22 "  50 32 2  66 42 B  82 52 R   98 62 b  114 72 r
+  3 03 ETX  19 13 DC3  35 23 #  51 33 3  67 43 C  83 53 S   99 63 c  115 73 s
+  4 04 EOT  20 14 DC4  36 24 $  52 34 4  68 44 D  84 54 T  100 64 d  116 74 t
+  5 05 ENQ  21 15 NAK  37 25 %  53 35 5  69 45 E  85 55 U  101 65 e  117 75 u
+  6 06 ACK  22 16 SYN  38 26 &  54 36 6  70 46 F  86 56 V  102 66 f  118 76 v
+  7 07 BEL  23 17 ETB  39 27 '\''  55 37 7  71 47 G  87 57 W  103 67 g  119 77 w
+  8 08 BS   24 18 CAN  40 28 (  56 38 8  72 48 H  88 58 X  104 68 h  120 78 x
+  9 09 HT   25 19 EM   41 29 )  57 39 9  73 49 I  89 59 Y  105 69 i  121 79 y
+ 10 0A LF   26 1A SUB  42 2A *  58 3A :  74 4A J  90 5A Z  106 6A j  122 7A z
+ 11 0B VT   27 1B ESC  43 2B +  59 3B ;  75 4B K  91 5B [  107 6B k  123 7B {
+ 12 0C FF   28 1C FS   44 2C ,  60 3C <  76 4C L  92 5C \  108 6C l  124 7C |
+ 13 0D CR   29 1D GS   45 2D -  61 3D =  77 4D M  93 5D ]  109 6D m  125 7D }
+ 14 0E SO   30 1E RS   46 2E .  62 3E >  78 4E N  94 5E ^  110 6E n  126 7E ~
+ 15 0F SI   31 1F US   47 2F /  63 3F ?  79 4F O  95 5F _  111 6F o  127 7F DEL
+'
+}
+
+hex_table() {
+    echo '
+    0 NUL    10 DLE    20      30 0    40 @    50 P    60 `    70 p
+    1 SOH    11 DC1    21 !    31 1    41 A    51 Q    61 a    71 q
+    2 STX    12 DC2    22 "    32 2    42 B    52 R    62 b    72 r
+    3 ETX    13 DC3    23 #    33 3    43 C    53 S    63 c    73 s
+    4 EOT    14 DC4    24 $    34 4    44 D    54 T    64 d    74 t
+    5 ENQ    15 NAK    25 %    35 5    45 E    55 U    65 e    75 u
+    6 ACK    16 SYN    26 &    36 6    46 F    56 V    66 f    76 v
+    7 BEL    17 ETB    27 '\''    37 7    47 G    57 W    67 g    77 w
+    8 BS     18 CAN    28 (    38 8    48 H    58 X    68 h    78 x
+    9 HT     19 EM     29 )    39 9    49 I    59 Y    69 i    79 y
+    A LF     1A SUB    2A *    3A :    4A J    5A Z    6A j    7A z
+    B VT     1B ESC    2B +    3B ;    4B K    5B [    6B k    7B {
+    C FF     1C FS     2C ,    3C <    4C L    5C \    6C l    7C |
+    D CR     1D GS     2D -    3D =    4D M    5D ]    6D m    7D }
+    E SO     1E RS     2E .    3E >    4E N    5E ^    6E n    7E ~
+    F SI     1F US     2F /    3F ?    4F O    5F _    6F o    7F DEL
+'
+}
+
+decimal_table() {
+    echo '
+    0 NUL    16 DLE    32      48 0    64 @    80 P    96 `   112 p
+    1 SOH    17 DC1    33 !    49 1    65 A    81 Q    97 a   113 q
+    2 STX    18 DC2    34 "    50 2    66 B    82 R    98 b   114 r
+    3 ETX    19 DC3    35 #    51 3    67 C    83 S    99 c   115 s
+    4 EOT    20 DC4    36 $    52 4    68 D    84 T   100 d   116 t
+    5 ENQ    21 NAK    37 %    53 5    69 E    85 U   101 e   117 u
+    6 ACK    22 SYN    38 &    54 6    70 F    86 V   102 f   118 v
+    7 BEL    23 ETB    39 '\''    55 7    71 G    87 W   103 g   119 w
+    8 BS     24 CAN    40 (    56 8    72 H    88 X   104 h   120 x
+    9 HT     25 EM     41 )    57 9    73 I    89 Y   105 i   121 y
+   10 LF     26 SUB    42 *    58 :    74 J    90 Z   106 j   122 z
+   11 VT     27 ESC    43 +    59 ;    75 K    91 [   107 k   123 {
+   12 FF     28 FS     44 ,    60 <    76 L    92 \   108 l   124 |
+   13 CR     29 GS     45 -    61 =    77 M    93 ]   109 m   125 }
+   14 SO     30 RS     46 .    62 >    78 N    94 ^   110 n   126 ~
+   15 SI     31 US     47 /    63 ?    79 O    95 _   111 o   127 DEL
+'
+}
+
+octal_table() {
+    echo '
+    0 NUL    20 DLE    40      60 0   100 @   120 P   140 `   160 p
+    1 SOH    21 DC1    41 !    61 1   101 A   121 Q   141 a   161 q
+    2 STX    22 DC2    42 "    62 2   102 B   122 R   142 b   162 r
+    3 ETX    23 DC3    43 #    63 3   103 C   123 S   143 c   163 s
+    4 EOT    24 DC4    44 $    64 4   104 D   124 T   144 d   164 t
+    5 ENQ    25 NAK    45 %    65 5   105 E   125 U   145 e   165 u
+    6 ACK    26 SYN    46 &    66 6   106 F   126 V   146 f   166 v
+    7 BEL    27 ETB    47 '\''    67 7   107 G   127 W   147 g   167 w
+   10 BS     30 CAN    50 (    70 8   110 H   130 X   150 h   170 x
+   11 HT     31 EM     51 )    71 9   111 I   131 Y   151 i   171 y
+   12 LF     32 SUB    52 *    72 :   112 J   132 Z   152 j   172 z
+   13 VT     33 ESC    53 +    73 ;   113 K   133 [   153 k   173 {
+   14 FF     34 FS     54 ,    74 <   114 L   134 \   154 l   174 |
+   15 CR     35 GS     55 -    75 =   115 M   135 ]   155 m   175 }
+   16 SO     36 RS     56 .    76 >   116 N   136 ^   156 n   176 ~
+   17 SI     37 US     57 /    77 ?   117 O   137 _   157 o   177 DEL
+'
+}
+
+
+case $1 in
+    -x)
+        hex_table
+        ;;
+    -o)
+        octal_table
+        ;;
+    -d)
+        decimal_table
+        ;;
+    *)
+        usage
+        full_table
+        ;;
+esac
+
+# vim:ft=sh
