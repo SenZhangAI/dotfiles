@@ -105,6 +105,13 @@ case $1 in
     -d)
         decimal_table
         ;;
+    -h)
+        usage
+        full_table
+        ;;
+    -v)
+        echo "ascii 0.1"
+        ;;
     *)
         usage
         full_table
