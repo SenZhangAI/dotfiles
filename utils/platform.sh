@@ -17,8 +17,8 @@ system_is() {
 }
 
 SYSTEM='UNKNOWN'
-
 if system_is Cygwin; then SYSTEM='Cygwin'; fi
+
 if system_is MSYS; then SYSTEM='Msys2'; fi
 if system_is Darwin; then SYSTEM='macOS'; fi
 if system_is Ubuntu; then SYSTEM='Ubuntu'; fi
@@ -26,8 +26,17 @@ if system_is Centos; then SYSTEM='Centos'; fi
 if system_is Arch; then SYSTEM='Arch'; fi
 
 if [ $SYSTEM == 'UNKNOWN' ]; then
-    echo "Error: system type unknown: $(uname)"
+    if [ -f "/etc/redhat-release" ]; then
+        test=$(cat /etc/redhat-release | grep -i "Centos")
+        if [ ! -z "$test" ]; then
+            SYSTEM='Centos'
+        fi
+    fi
 fi
 
-echo "Detected System: $SYSTEM"
+if [ $SYSTEM == 'UNKNOWN' ]; then
+    echo "Error: system type unknown: $(uname)"
+else
+    echo "Detected System: $SYSTEM"
+fi
 
