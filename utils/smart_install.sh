@@ -7,8 +7,10 @@ else
     return
 fi
 
+origin_base_dir=$base_dir
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $base_dir/platform.sh
+base_dir=$origin_base_dir
 
 command_not_installed() {
     printf "Check if [$1] installed..."

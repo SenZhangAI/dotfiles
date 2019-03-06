@@ -7,14 +7,18 @@ source $base_dir/../utils/smart_install.sh
 
 install_tmux_from_source() {
     echo "Installing tmux from source..."
-    smart_install ncursors libevent
-    cd $base_dir
-    git clone --depth=1 https://github.com/tmux/tmux.git
-    cd tmux
+    smart_install ncurses libevent
+
+    install_tmux_dir=$HOME/.tmp/tmux
+    if [ -d $install_tmux_dir ]; then rm -rf $install_tmux_dir; fi
+    mkdir $HOME/.tmp
+
+    git clone --depth=1 https://github.com/tmux/tmux.git $install_tmux_dir
+    cd $install_tmux_dir
     sh autogen.sh
     ./configure && make
-    cp ./tmux/tmux $HOME/bin
-    rm -rf tmux
+    cp $install_tmux_dir/tmux $HOME/bin
+    rm -rf $HOME/.tmp
     echo "Install tmux done."
 }
 
@@ -34,7 +38,7 @@ case $SYSTEM in
         if command_installed tmux; then
             _tmux_version=$(tmux -V)
             printf "Check [tmux] version...%-34s$_tmux_version\n"
-            if [[ $_tmux_version =~ "1.*" ]]; then
+            if [[ "$_tmux_version" =~ 1\.[0-9]* ]]; then
                 echo "tmux version 1.X is old, try to uninstall it..."
                 yum remove tmux
                 check_and_kill_running_tmux
