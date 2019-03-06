@@ -4,7 +4,7 @@
 if [ -z "$_PLATFORM_LOADED" ]; then
     _PLATFORM_LOADED=1
 else
-    return
+    return 0
 fi
 
 system_is() {
@@ -25,7 +25,7 @@ if system_is Ubuntu; then SYSTEM='Ubuntu'; fi
 if system_is Centos; then SYSTEM='Centos'; fi
 if system_is Arch; then SYSTEM='Arch'; fi
 
-if [ $SYSTEM == 'UNKNOWN' ]; then
+if [[ $SYSTEM == 'UNKNOWN' ]]; then
     if [ -f "/etc/redhat-release" ]; then
         test=$(cat /etc/redhat-release | grep -i "Centos")
         if [ ! -z "$test" ]; then
@@ -34,7 +34,7 @@ if [ $SYSTEM == 'UNKNOWN' ]; then
     fi
 fi
 
-if [ $SYSTEM == 'UNKNOWN' ]; then
+if [[ $SYSTEM == 'UNKNOWN' ]]; then
     echo "Error: system type unknown: $(uname)"
 else
     echo "Detected System: $SYSTEM"

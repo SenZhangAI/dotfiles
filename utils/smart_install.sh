@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 #include once
-if [ -z "$_UTILS_LOADED" ]; then
-    _UTILS_LOADED=1
+if [ -z "$_SMART_INSTALL_LOADED" ]; then
+    _SMART_INSTALL_LOADED=1
 else
-    return
+    return 0
 fi
 
 origin_base_dir=$base_dir
-base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+base_dir=$(dirname "${BASH_SOURCE[0]}")
 source $base_dir/platform.sh
 base_dir=$origin_base_dir
 
