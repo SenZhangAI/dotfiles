@@ -50,6 +50,13 @@ case $SYSTEM in
             install_tmux_from_source
         fi
         ;;
+    macOS)
+        #makes pbcopy and pbpaste work again within tmux.
+        brew install reattach-to-user-namespace
+        if command_not_installed tmux; then
+            brew install tmux
+        fi
+        ;;
     *)
         ;;
 esac
