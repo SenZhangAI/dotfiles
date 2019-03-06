@@ -7,7 +7,7 @@ source $base_dir/../utils/smart_install.sh
 
 install_tmux_from_source() {
     echo "Installing tmux from source..."
-    smart_install ncurses libevent
+    smart_install ncurses ncurses-devel libevent libevent-devel automake
 
     install_tmux_dir=$HOME/.tmp/tmux
     if [ -d $install_tmux_dir ]; then rm -rf $install_tmux_dir; fi
@@ -24,7 +24,7 @@ install_tmux_from_source() {
 
 check_and_kill_running_tmux() {
     _tmux_running_pid=$(pidof tmux)
-    if [! -z $_tmux_running_pid ]; then
+    if [ ! -z $_tmux_running_pid ]; then
         read -p "old version tmux is running, would you like to kill?[y/n]" ans
         if [ $ans == "y" ]; then
             pkill tmux
@@ -40,7 +40,7 @@ case $SYSTEM in
             printf "Check [tmux] version...%-34s$_tmux_version\n"
             if [[ "$_tmux_version" =~ 1\.[0-9]* ]]; then
                 echo "tmux version 1.X is old, try to uninstall it..."
-                yum remove tmux
+                yum remove -y tmux
                 check_and_kill_running_tmux
                 install_tmux_from_source
             fi
