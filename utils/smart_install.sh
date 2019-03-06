@@ -59,6 +59,6 @@ case $SYSTEM in
 esac
 
 smart_install() {
-    $__INSTALL__ $@
+    eval "$__INSTALL__ $@"
 }
 
