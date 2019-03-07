@@ -58,6 +58,9 @@ case $SYSTEM in
         fi
         ;;
     *)
+        if command_not_installed tmux; then
+            smart_install tmux
+        fi
         ;;
 esac
 
