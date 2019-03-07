@@ -48,8 +48,6 @@ init_install_config() {
             fi
             ;;
         *)
-            echo "Error: system is not supported yet :("
-            exit -1
             ;;
     esac
 }
