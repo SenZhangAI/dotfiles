@@ -4,6 +4,7 @@ base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 source $base_dir/../utils/platform.sh
 source $base_dir/../utils/smart_install.sh
+source $base_dir/../utils/usr_confirm.sh
 
 install_tmux_from_source() {
     echo "Installing tmux from source..."
@@ -25,8 +26,7 @@ install_tmux_from_source() {
 check_and_kill_running_tmux() {
     _tmux_running_pid=$(pidof tmux)
     if [ ! -z $_tmux_running_pid ]; then
-        read -p "old version tmux is running, would you like to kill?[y/n]" ans
-        if [ $ans == "y" ]; then
+        if usr_confirm "old version tmux is running, would you like to kill?"
             pkill tmux
         fi
     fi
