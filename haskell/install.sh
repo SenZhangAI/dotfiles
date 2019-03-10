@@ -9,18 +9,12 @@ if command_not_installed perl; then
     smart_install perl
 fi
 
-install_haskell() {
-    if command_not_installed stack; then
-        curl -sSL https://get.haskellstack.org/ | sh
-    fi
-
-    if command_not_installed hindent; then
-        stack install hindent
-    fi
-}
-
 ## check if stack has configured mirrors to speed up
 stack_need_conf_mirrors() {
+    if [ ! -f $1 ]; then
+        return 0
+    fi
+
     mirror_url=$(perl -ne 'print if /^\s*download-prefix:\s*.*tsinghua.*/' $1)
 
     if [[ -n $mirror_url ]]; then
@@ -33,27 +27,33 @@ stack_need_conf_mirrors() {
 }
 
 config_haskell_stack() {
+    mkdir -p $HOME/.stack
+
     conf=$HOME/.stack/config.yaml
-    if [ -f $conf ]; then
-        if stack_need_conf_mirrors $conf; then
-            echo "Configuring stack ..."
-            echo '
-            ###ADD THIS IF YOU LIVE IN CHINA
-            #### @see https://docs.haskellstack.org/en/stable/install_and_upgrade/#china-based-users
-            setup-info: "http://mirrors.tuna.tsinghua.edu.cn/stackage/stack-setup.yaml"
-            urls:
-            latest-snapshot: http://mirrors.tuna.tsinghua.edu.cn/stackage/snapshots.json
-            lts-build-plans: http://mirrors.tuna.tsinghua.edu.cn/stackage/lts-haskell/
-            nightly-build-plans: http://mirrors.tuna.tsinghua.edu.cn/stackage/stackage-nightly/
-            package-indices:
-            - name: Tsinghua
-            download-prefix: http://mirrors.tuna.tsinghua.edu.cn/hackage/package/
-            http: http://mirrors.tuna.tsinghua.edu.cn/hackage/00-index.tar.gz
-            ' >> /dev/null # $conf
-        fi
+    if stack_need_conf_mirrors $conf; then
+        echo "Configuring stack ..."
+        cat $base_dir/config.yaml > $conf
     fi
     unset conf
 }
 
+install_haskell() {
+    if command_not_installed stack; then
+        curl -sSL https://get.haskellstack.org/ | sh
+        config_haskell_stack
+        stack setup
+    elif usr_confirm "stack has already installed, would you like force reinstall?"; then
+        curl -sSL https://get.haskellstack.org/ | sh -s - -f
+        config_haskell_stack
+        stack setup
+    fi
+}
+
 install_haskell
-config_haskell_stack
+
+if command_not_installed hindent; then
+    # > 1G memory
+    stack install hindent
+    #stack build --copy-compiler-tool hindent
+fi
+
