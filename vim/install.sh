@@ -19,4 +19,19 @@ case $OSTYPE in
         ;;
 esac
 
+config_vim() {
+    mkdir -p $HOME/.vim
+    {
+        cd $HOME/.vim
+	    git clone https://github.com/SenZhangAI/vim
+	    ./vim/install.sh
+    } &
+    wait
+    return 0
+}
+
+if [ ! -d $HOME/.vim/vim ]; then
+    config_vim
+fi
+
 # vim:st=4:sw=4
