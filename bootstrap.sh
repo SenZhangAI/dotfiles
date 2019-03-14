@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+bakfile() {
+    if [ ! -f $1.bak ]; then
+        echo "backup file $1 ..."
+        cp $1 $1.bak
+    fi
+}
+
 init_install_config() {
     case $OSTYPE in
         cygwin*)
@@ -35,9 +42,9 @@ init_install_config() {
             brew install git
             ;;
         msys*)
-            cp /etc/pacman.d/mirrorlist.mingw32 /etc/pacman.d/mirrorlist.mingw32.bak
-            cp /etc/pacman.d/mirrorlist.mingw64 /etc/pacman.d/mirrorlist.mingw64.bak
-            cp /etc/pacman.d/mirrorlist.msys /etc/pacman.d/mirrorlist.msys.bak
+            bakfile /etc/pacman.d/mirrorlist.mingw32
+            bakfile /etc/pacman.d/mirrorlist.mingw64
+            bakfile /etc/pacman.d/mirrorlist.msys
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686' > /etc/pacman.d/mirrorlist.mingw32
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64' > /etc/pacman.d/mirrorlist.mingw64
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
