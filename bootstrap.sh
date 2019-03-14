@@ -7,6 +7,15 @@ bakfile() {
     fi
 }
 
+system_is() {
+    test=$(uname -a 2>/dev/null | grep -i $1)
+    if [ -z "$test" ]; then
+        return 1
+    else
+        return 0
+    fi
+}
+
 init_install_config() {
     case $OSTYPE in
         cygwin*)
@@ -49,9 +58,11 @@ init_install_config() {
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64' > /etc/pacman.d/mirrorlist.mingw64
             echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
 
-            pacman -Syu
+            pacman -Syu &
+            wait
             if [ -z $(which git 2>/dev/null) ]; then
-                pacman -Sy git
+                pacman -Sy git &
+                wait
             fi
             ;;
         *)
@@ -77,23 +88,15 @@ else
 fi
 
 cp -rf etc/* $ETC/
-#cp all files in dotfiles/bin to $BIN
-for f in `find ./bin/ -type f`; do
-    cp $f $BIN/
-done
-
-system_is() {
-    test=$(uname -a 2>/dev/null | grep -i $1)
-    if [ -z "$test" ]; then
-        return 1
-    else
-        return 0
-    fi
-}
-
 if system_is cygwin;then
     cp bin/cygwin/* bin/
 fi
+
+#cp all exec files in dotfiles/bin to $BIN
+for f in `find $HOME/.local/dotfiles/bin -maxdepth 1 -type f`; do
+    echo cp $f $BIN/
+    cp $f $BIN/
+done
 
 cp bootstrap.sh $BIN/
 
