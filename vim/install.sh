@@ -56,6 +56,7 @@ config_vim() {
         git clone https://github.com/SenZhangAI/vim $vim_dir
         cd $vim_dir
     fi
+    unset $vim_dir
 
     ./install.sh &
     wait
