@@ -51,6 +51,10 @@ install_haskell() {
 
 install_haskell
 
+if command_not_installed runghc; then
+    stack install runghc
+fi
+
 if command_not_installed hindent; then
     # > 1G memory
     stack install hindent
