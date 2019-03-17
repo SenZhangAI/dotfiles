@@ -16,10 +16,8 @@ config_zsh() {
     else
         printf "%-20s No.\n"
         printf "Configured zsh...\n"
-        {
-            sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-        } &
-    wait
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &
+        wait
     fi
 }
 
@@ -37,8 +35,22 @@ set_zsh_default_shell() {
     #TODO
 }
 
-config_zsh
+custom_config_oh_my_zsh() {
+    zsh_conf_dir=$HOME/oh-my-zsh-sen
+    if [ -d $zsh_conf_dir ]; then
+        cd $zsh_conf_dir
+        git pull
+    else
+        git clone https://github.com/SenZhangAI/oh-my-zsh-sen $zsh_conf_dir
+        cd $zsh_conf_dir
+    fi
+    unset $zsh_conf_dir
+    ./install.sh &
+    wait
+}
 
+config_zsh
 set_zsh_default_shell
+custom_config_oh_my_zsh
 
 # vim:st=4:sw=4
