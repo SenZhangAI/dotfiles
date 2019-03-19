@@ -26,7 +26,7 @@ install_tmux_from_source() {
 check_and_kill_running_tmux() {
     _tmux_running_pid=$(pidof tmux)
     if [ ! -z $_tmux_running_pid ]; then
-        if usr_confirm "old version tmux is running, would you like to kill?"
+        if usr_confirm "old version tmux is running, would you like to kill?"; then
             pkill tmux
         fi
     fi
