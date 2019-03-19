@@ -74,3 +74,9 @@ if command_not_installed cabal; then
 fi
 
 install_nix
+
+if command_not_installed hie-wapper; then
+    if usr_confirm "Do you want to install \e[32mH\e[0maskell \e[32mI\e[0mDE \e[32mE\e[0mngine"; then
+        nix-env -iA hies -f https://github.com/domenkozar/hie-nix/tarball/master
+    fi
+fi
