@@ -13,7 +13,7 @@ source $base_dir/platform.sh
 base_dir=$origin_base_dir
 
 command_not_installed() {
-    printf "Check if [$1] installed..."
+    printf "Check if [\e[32m$1\e[0m] installed..."
     found=$(which $1 2>/dev/null)
     if [ -z "$found" ]; then
         printf "%-24s Not Installed\n"

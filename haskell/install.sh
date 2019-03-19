@@ -32,7 +32,7 @@ config_haskell_stack() {
     conf=$HOME/.stack/config.yaml
     if stack_need_conf_mirrors $conf; then
         echo "Configuring stack ..."
-        cat $base_dir/config.yaml > $conf
+        cat $base_dir/stack_config.yaml > $conf
     fi
     unset conf
 }
@@ -49,7 +49,19 @@ install_haskell() {
     fi
 }
 
+install_nix() {
+    if command_not_installed nix; then
+        #curl https://nixos.org/nix/install | sh
+        sh <(curl https://mirrors.tuna.tsinghua.edu.cn/nix/latest/install) --no-daemon &
+        wait
+    fi
+}
+
 install_haskell
+
+if command_not_installed runghc; then
+    stack install runghc
+fi
 
 if command_not_installed hindent; then
     # > 1G memory
@@ -57,3 +69,14 @@ if command_not_installed hindent; then
     #stack build --copy-compiler-tool hindent
 fi
 
+if command_not_installed cabal; then
+    stack install cabal-install
+fi
+
+install_nix
+
+if command_not_installed hie-wapper; then
+    if usr_confirm "Do you want to install \e[32mH\e[0maskell \e[32mI\e[0mDE \e[32mE\e[0mngine"; then
+        nix-env -iA hies -f https://github.com/domenkozar/hie-nix/tarball/master
+    fi
+fi

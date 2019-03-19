@@ -13,6 +13,12 @@ templates:
     copyright: MIT
     github-username: "SenZhangAI"
 
+system-ghc: true
+ignore-revision-mismatch: true
+
+nix:
+  enable: true
+
 ###ADD THIS IF YOU LIVE IN CHINA
 #### @see https://docs.haskellstack.org/en/stable/install_and_upgrade/#china-based-users
 setup-info: "http://mirrors.tuna.tsinghua.edu.cn/stackage/stack-setup.yaml"
