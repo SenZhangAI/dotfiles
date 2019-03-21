@@ -44,7 +44,7 @@ custom_config_oh_my_zsh() {
         git clone https://github.com/SenZhangAI/oh-my-zsh-sen $zsh_conf_dir
         cd $zsh_conf_dir
     fi
-    unset $zsh_conf_dir
+    unset zsh_conf_dir
     ./install.sh &
     wait
 }
