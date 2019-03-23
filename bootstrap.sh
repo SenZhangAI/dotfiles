@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 bakfile() {
     if [ ! -f $1.bak ]; then
         echo "backup file $1 ..."
@@ -19,8 +21,12 @@ system_is() {
 init_install_config() {
     case $OSTYPE in
         cygwin*)
-            if [ -z $(which git 2>/dev/null) ]; then
+            if [[ -z $(which git 2>/dev/null) ]]; then
                 printf "\033[32mgit\033[0m need to be installed first!\n"
+                exit 233
+            fi
+            if [[ -z $(which wget 2>/dev/null) ]]; then
+                printf "\033[32mwget\033[0m need to be installed first!\n"
                 exit 233
             fi
             ;;
@@ -86,14 +92,13 @@ else
 fi
 
 cp -rf etc/* $ETC/
-if system_is cygwin;then
-    cp bin/cygwin/* bin/
-fi
 
 #cp all exec files in dotfiles/bin to $BIN
 for f in `find $HOME/.local/dotfiles/bin -maxdepth 1 -type f`; do
-    echo cp $f $BIN/
     cp $f $BIN/
+    if system_is cygwin;then
+        cp bin/cygwin/* $BIN/
+    fi
 done
 
 cp bootstrap.sh $BIN/
@@ -104,3 +109,4 @@ echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 
 echo "Install Successfully."
 
+# vim: et st=4 sw=4 ts=4

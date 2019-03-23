@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 source $base_dir/../utils/smart_install.sh
