@@ -96,10 +96,30 @@ cp -rf etc/* $ETC/
 #cp all exec files in dotfiles/bin to $BIN
 for f in `find $HOME/.local/dotfiles/bin -maxdepth 1 -type f`; do
     cp $f $BIN/
-    if system_is cygwin;then
-        cp bin/cygwin/* $BIN/
-    fi
 done
+
+if system_is cygwin;then
+    cp bin/cygwin/* $BIN/
+
+    _set_go_env_for_cygwin() {
+        batfile=cygwin_set_go_env.bat
+        GOBASEPATH="$HOME/GoWorkSpace"
+        GOPATH_WIN=`cygpath -a -w $GOBASEPATH`
+        GOBIN_WIN=`cygpath -a -w $GOBASEPATH/bin`
+
+        echo "@ECHO OFF" > $batfile
+        echo "ECHO \"Set Environment for go...\"" >> $batfile
+        echo "SETX GOPATH $GOPATH_WIN" >> $batfile
+        echo "SETX GOBIN $GOBIN_WIN" >> $batfile
+        echo "ECHO \"Done. It will auto delete this tmp file.\"" >> $batfile
+        echo "PAUSE" >> $batfile
+        echo "ATTRIB -h -s- r -a %0" >> $batfile
+        echo "DEL %0" >> $batfile
+        printf "For setting golang env, plese run \e[32m$batfile\e[0m by Administrator Role.\n"
+        explorer .
+    }
+    _set_go_env_for_cygwin
+fi
 
 cp bootstrap.sh $BIN/
 
