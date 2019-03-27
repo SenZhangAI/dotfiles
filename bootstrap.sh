@@ -92,14 +92,10 @@ else
 fi
 
 cp -rf etc/* $ETC/
-
-#cp all exec files in dotfiles/bin to $BIN
-for f in `find $HOME/.local/dotfiles/bin -maxdepth 1 -type f`; do
-    cp $f $BIN/
-done
+cp -rf bin/* $BIN/
 
 if system_is cygwin;then
-    cp bin/cygwin/* $BIN/
+    cp spec/cygwin/bin/* $BIN/
 
     _set_go_env_for_cygwin() {
         batfile=cygwin_set_go_env.bat
@@ -116,9 +112,18 @@ if system_is cygwin;then
         echo "ATTRIB -h -s- r -a %0" >> $batfile
         echo "DEL %0" >> $batfile
         printf "For setting golang env, plese run \e[32m$batfile\e[0m by Administrator Role.\n"
-        explorer .
+        explorer . &
     }
     _set_go_env_for_cygwin
+
+    echo "here" $(command -V go)
+
+    if [[ ! -z $(which go 2>/dev/null) ]]; then
+        # go is excutable
+        echo go build -o $BIN/git.exe ./spec/cygwin/git.go
+        go build -o git.exe ./spec/cygwin/git.go
+        mv git.exe $BIN/
+    fi
 fi
 
 cp bootstrap.sh $BIN/
