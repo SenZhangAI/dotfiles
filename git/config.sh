@@ -25,4 +25,8 @@ else
 fi
 
 
+# store username and password so I won't need to type username and password again.
+#git config --global credential.helper 'cache --timeout 7200'
+git config --global credential.helper store
+
 # vim:st=4:sw=4
