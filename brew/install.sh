@@ -30,6 +30,8 @@ brew install tldr
 brew install tmux
 brew install tree
 brew install xz
+brew install clang-format
+brew install global # for gtags
 
 # Remove outdated versions from the cellar.
 brew cleanup
