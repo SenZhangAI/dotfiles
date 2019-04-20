@@ -55,6 +55,20 @@ install_nix() {
         sh <(curl https://mirrors.tuna.tsinghua.edu.cn/nix/latest/install) --no-daemon &
         wait
     fi
+
+    case $SYSTEM in
+        Cygwin*)
+            ;;
+        Msys2*)
+            ;;
+        Ubuntu*)
+            ;;
+        Centos*)
+            ;;
+        macOS*)
+            . $HOME/.nix-profile/etc/profile.d/nix.sh
+            ;;
+    esac
 }
 
 install_haskell
