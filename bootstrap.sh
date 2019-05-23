@@ -95,7 +95,7 @@ cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
 
 if system_is cygwin;then
-    cp spec/cygwin/bin/* $BIN/
+    cp -rf spec/cygwin/bin/* $BIN/
 
     _set_go_env_for_cygwin() {
         batfile=cygwin_set_go_env.bat
@@ -116,7 +116,7 @@ if system_is cygwin;then
     }
     _set_go_env_for_cygwin
 
-    echo "here" $(command -V go)
+    echo $(command -V go)
 
     if [[ ! -z $(which go 2>/dev/null) ]]; then
         # go is excutable

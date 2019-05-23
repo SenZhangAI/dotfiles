@@ -39,9 +39,6 @@ command_installed() {
 case $SYSTEM in
     Cygwin*)
         __INSTALL__="apt-cyg install "
-        if command_not_installed apt-cyg; then
-            git clone https://github.com/transcode-open/apt-cyg.git $HOME/.local
-        fi
         ;;
     Msys2*)
         __INSTALL__="pacman -Sy "
