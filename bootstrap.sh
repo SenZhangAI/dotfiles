@@ -46,15 +46,22 @@ init_install_config() {
             git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
 
             export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-            # Make sure we’re using the latest Homebrew.
-            echo "brew update"
-            brew update
 
-            # Upgrade any already-installed formulae.
-            echo "brew upgrade"
-            brew upgrade
+            if [ -f $HOME/.local/dotfiles/spec/macOS/.brew-update ]; then
+                export HOMEBREW_NO_AUTO_UPDATE=true
+            else
+                brew tap homebrew/cask
+                # Make sure we’re using the latest Homebrew.
+                echo "brew update"
+                brew update
 
-            brew install git
+                # Upgrade any already-installed formulae.
+                echo "brew upgrade"
+                brew upgrade
+                brew install git
+                brew cask install iterm2
+            fi
+
             ;;
         msys*)
             bakfile /etc/pacman.d/mirrorlist.mingw32
