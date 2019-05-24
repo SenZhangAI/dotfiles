@@ -35,7 +35,6 @@ check_dependent() {
 
     if command_not_installed python2; then
         smart_install python2
-        j
         case $SYSTEM in
             Cygwin)
                 smart_install python27-devel
