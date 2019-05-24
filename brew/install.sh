@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
 
-# Install command-line tools using Homebrew.
-
-# Make sure we’re using the latest Homebrew.
-echo "brew update"
-brew update
-
-# Upgrade any already-installed formulae.
-echo "brew upgrade"
-brew upgrade
+# disable homebrew update, it's too slow!
+export HOMEBREW_NO_AUTO_UPDATE=true
 
 # Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
@@ -32,6 +25,21 @@ brew install tree
 brew install xz
 brew install clang-format
 brew install global # for gtags
+
+brew install golang
+
+brew cask install iterm2
+brew cask install qq
+brew cask install nutstore
+brew cask install iina
+brew cask install shadowsocksx-ng
+# brew cask install visual-studio-code ## too slow
+brew cask install teamviewer
+brew cask install google-chrome
+brew cask install thunder
+brew cask install downie # download videos from youtube youku bilibili vimeo etc.
+brew cask install goland
+brew cask install pycharm
 
 # Remove outdated versions from the cellar.
 brew cleanup
