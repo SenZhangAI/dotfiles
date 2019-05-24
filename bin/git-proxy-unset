@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+git config --global --unset https.proxy
+git config --global --unset http.proxy
+
+# vim:ft=sh
