@@ -29,10 +29,11 @@ brew install global # for gtags
 brew install golang
 
 brew cask install iterm2
+brew cask install shadowsocksx-ng
 brew cask install qq
+brew cask install wechat
 brew cask install nutstore
 brew cask install iina
-brew cask install shadowsocksx-ng
 # brew cask install visual-studio-code ## too slow
 brew cask install teamviewer
 brew cask install google-chrome
