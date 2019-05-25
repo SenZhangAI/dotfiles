@@ -10,7 +10,8 @@ BREW_PREFIX=$(brew --prefix)
 brew install wget
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install macvim
+brew install neovim
 brew install grep
 brew install openssh
 
