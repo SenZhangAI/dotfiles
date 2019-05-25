@@ -100,40 +100,50 @@ fi
 
 cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
-
-if system_is cygwin;then
-    cp -rf spec/cygwin/bin/* $BIN/
-
-    _set_go_env_for_cygwin() {
-        batfile=cygwin_set_go_env.bat
-        GOBASEPATH="$HOME/GoWorkSpace"
-        GOPATH_WIN=`cygpath -a -w $GOBASEPATH`
-        GOBIN_WIN=`cygpath -a -w $GOBASEPATH/bin`
-
-        echo "@ECHO OFF" > $batfile
-        echo "ECHO \"Set Environment for go...\"" >> $batfile
-        echo "SETX GOPATH $GOPATH_WIN" >> $batfile
-        echo "SETX GOBIN $GOBIN_WIN" >> $batfile
-        echo "ECHO \"Done. It will auto delete this tmp file.\"" >> $batfile
-        echo "PAUSE" >> $batfile
-        echo "ATTRIB -h -s- r -a %0" >> $batfile
-        echo "DEL %0" >> $batfile
-        printf "For setting golang env, plese run \e[32m$batfile\e[0m by Administrator Role.\n"
-        explorer . &
-    }
-    _set_go_env_for_cygwin
-
-    echo $(command -V go)
-
-    if [[ ! -z $(which go 2>/dev/null) ]]; then
-        # go is excutable
-        echo go build -o $BIN/git.exe ./spec/cygwin/git.go
-        go build -o git.exe ./spec/cygwin/git.go
-        mv git.exe $BIN/
-    fi
-fi
-
 cp bootstrap.sh $BIN/
+
+_set_go_env_for_cygwin() {
+    batfile=cygwin_set_go_env.bat
+    GOBASEPATH="$HOME/GoWorkSpace"
+    GOPATH_WIN=`cygpath -a -w $GOBASEPATH`
+    GOBIN_WIN=`cygpath -a -w $GOBASEPATH/bin`
+
+    echo "@ECHO OFF" > $batfile
+    echo "ECHO \"Set Environment for go...\"" >> $batfile
+    echo "SETX GOPATH $GOPATH_WIN" >> $batfile
+    echo "SETX GOBIN $GOBIN_WIN" >> $batfile
+    echo "ECHO \"Done. It will auto delete this tmp file.\"" >> $batfile
+    echo "PAUSE" >> $batfile
+    echo "ATTRIB -h -s- r -a %0" >> $batfile
+    echo "DEL %0" >> $batfile
+    printf "For setting golang env, plese run \e[32m$batfile\e[0m by Administrator Role.\n"
+    explorer . &
+}
+
+platform_spec_config() {
+    case $OSTYPE in
+        cygwin*)
+            cp -rf spec/cygwin/bin/* $BIN/
+            _set_go_env_for_cygwin
+
+            if [[ ! -z $(which go 2>/dev/null) ]]; then
+                # go is excutable
+                echo go build -o $BIN/git.exe ./spec/cygwin/git.go
+                go build -o git.exe ./spec/cygwin/git.go
+                mv git.exe $BIN/
+            fi
+            ;;
+        darwin*)
+            cp -rf spec/macOS/bin/* $BIN/
+            ;;
+        msys*)
+            ;;
+        *)
+            ;;
+    esac
+}
+
+platform_spec_config
 
 # source init.sh, move to the end line
 sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc

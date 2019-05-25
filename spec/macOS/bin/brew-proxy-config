@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ $# -ge 1 ]; then
+    _BREW_PROXY_PORT_=$1
+else
+    _BREW_PROXY_PORT_=1087 # default port is 1087
+fi
+
+echo export ALL_PROXY=http://127.0.0.1:$_BREW_PROXY_PORT_
+export ALL_PROXY=http://127.0.0.1:$_BREW_PROXY_PORT_
+
+unset _BREW_PROXY_PORT_
+
+# vim:ft=sh
