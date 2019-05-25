@@ -27,10 +27,10 @@ brew install xz
 brew install clang-format
 brew install global # for gtags
 
-brew install golang
-
 brew cask install iterm2
 brew cask install shadowsocksx-ng
+brew cask install alfred
+brew cask install hammerspoon
 brew cask install qq
 brew cask install wechat
 brew cask install nutstore
@@ -39,9 +39,7 @@ brew cask install iina
 brew cask install teamviewer
 brew cask install google-chrome
 brew cask install thunder
-brew cask install downie # download videos from youtube youku bilibili vimeo etc.
-brew cask install goland
-brew cask install pycharm
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
