@@ -13,6 +13,7 @@ BREW_PREFIX=$(brew --prefix)
 brew install wget
 
 # Install more recent versions of some macOS tools.
+brew unlink vim # unlink vim before installing macvim
 brew install macvim
 brew install neovim
 brew install grep
@@ -38,10 +39,27 @@ brew cask install qq
 brew cask install wechat
 brew cask install nutstore
 brew cask install iina
-# brew cask install visual-studio-code ## too slow
 brew cask install teamviewer
 brew cask install google-chrome
 brew cask install thunder
+brew cask install falsh-player
+
+######################## OPTIONAL APPLICATION #########################
+#brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
+#brew install aliwangwang
+
+#brew cask install visual-studio-code ## too slow
+#brew cask install goland
+#brew cask install rubymine
+#brew cask install clion
+#brew cask install keycaskr ## a keystroke visualizer
+#brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
+
+## NTFS Support for MAC
+### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
+#brew cask install osxfuse
+#brew install ntfs-3g
+#######################################################################
 
 # Remove outdated versions from the cellar.
 brew cleanup
