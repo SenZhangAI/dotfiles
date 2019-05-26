@@ -151,4 +151,4 @@ echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 
 echo "Install Successfully."
 
-# vim: et st=4 sw=4 ts=4
+# vim: sw=4:ts=4
