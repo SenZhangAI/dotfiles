@@ -59,7 +59,6 @@ init_install_config() {
                 echo "brew upgrade"
                 brew upgrade
                 brew install git
-                brew cask install iterm2
             fi
 
             ;;
@@ -146,8 +145,11 @@ platform_spec_config() {
 platform_spec_config
 
 # source init.sh, move to the end line
-sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
-echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
+
+if [ -f $HOME/.bashrc ]; then
+    sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
+    echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
+fi
 
 echo "Install Successfully."
 
