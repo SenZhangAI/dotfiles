@@ -28,4 +28,7 @@ echo "[Config] save username and password"
 #git config --global credential.helper 'cache --timeout 7200'
 git config --global credential.helper store
 
+echo "[Config] enable color"
+git config --global color.ui true
+
 # vim:st=4:sw=4
