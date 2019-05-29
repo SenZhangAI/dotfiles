@@ -52,6 +52,8 @@ brew cask install falsh-player
 #brew cask install goland
 #brew cask install rubymine
 #brew cask install clion
+#brew cask install pycharm-ce
+#brew cask install gitkraken
 #brew cask install keycaskr ## a keystroke visualizer
 #brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
 
