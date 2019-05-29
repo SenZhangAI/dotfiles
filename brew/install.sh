@@ -48,14 +48,24 @@ brew cask install falsh-player
 #brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
 #brew install aliwangwang
 
+#brew install mycli
+#brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
+
+#brew install protobuf
 #brew cask install visual-studio-code ## too slow
+#brew install go
 #brew cask install goland
+#brew install ruby
 #brew cask install rubymine
 #brew cask install clion
 #brew cask install pycharm-ce
+
+#brew cask install virtualbox
+#brew cask install virtualbox-extension-pack
+
 #brew cask install gitkraken
 #brew cask install keycaskr ## a keystroke visualizer
-#brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
+#brew cask install switchhosts
 
 ## NTFS Support for MAC
 ### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
