@@ -25,6 +25,7 @@ brew install fzf
 brew install git
 brew install perl
 brew install tldr
+brew install telnet
 brew install tmux
 brew install tree
 brew install xz
@@ -42,7 +43,7 @@ brew cask install iina
 brew cask install teamviewer
 brew cask install google-chrome
 brew cask install thunder
-brew cask install falsh-player
+brew cask install flash-player
 
 ######################## OPTIONAL APPLICATION #########################
 #brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
@@ -67,6 +68,9 @@ brew cask install falsh-player
 #brew cask install keycaskr ## a keystroke visualizer
 #brew cask install switchhosts
 
+#brew cask install vagrant
+#vagrant plugin install vagrant-vbguest
+
 ## NTFS Support for MAC
 ### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
 #brew cask install osxfuse
@@ -74,5 +78,6 @@ brew cask install falsh-player
 #######################################################################
 
 # Remove outdated versions from the cellar.
+"[Run] brew cleanup"
 brew cleanup
 

@@ -8,7 +8,7 @@ else
 fi
 
 usr_confirm() {
-    printf "\033[33m$1\033[0m [y/N]? "
+    printf "\033[33m$1\033[0m [y/N] "
     read ans
     case $ans in
         Y | y)
