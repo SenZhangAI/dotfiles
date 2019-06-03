@@ -58,6 +58,14 @@ check_dependent() {
     if command_not_installed gcc; then
         smart_install gcc
     fi
+
+    if command_installed pip2; then
+        pip2 install neovim
+    fi
+
+    if command_installed pip3; then
+        pip3 install neovim
+    fi
 }
 
 config_vim() {
@@ -81,4 +89,4 @@ config_vim() {
 
 config_vim
 
-# vim:st=4:sw=4
+# vim:sw=4
