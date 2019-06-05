@@ -38,7 +38,7 @@ brew cask install alfred
 brew cask install hammerspoon
 brew cask install qq
 brew cask install wechat
-brew cask install nutstore
+brew cask install nutstore && open /usr/local/Caskroom/nutstore/latest &
 brew cask install iina
 brew cask install teamviewer
 brew cask install google-chrome
