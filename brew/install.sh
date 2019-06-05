@@ -60,6 +60,7 @@ brew cask install flash-player
 #brew cask install rubymine
 #brew cask install clion
 #brew cask install pycharm-ce
+#brew cask install phpstorm
 
 #brew cask install virtualbox
 #brew cask install virtualbox-extension-pack
