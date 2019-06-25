@@ -38,7 +38,7 @@ brew cask install alfred
 brew cask install hammerspoon
 brew cask install qq
 brew cask install wechat
-brew cask install nutstore
+brew cask install nutstore && open /usr/local/Caskroom/nutstore/latest &
 brew cask install iina
 brew cask install teamviewer
 brew cask install google-chrome
@@ -52,14 +52,25 @@ brew cask install flash-player
 #brew cask install kindle
 #brew cask install calibre
 
+#brew install mycli
+#brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
+
+#brew install protobuf
 #brew cask install visual-studio-code ## too slow
+#brew install go
 #brew cask install goland
+#brew install ruby
 #brew cask install rubymine
 #brew cask install clion
 #brew cask install pycharm-ce
+#brew cask install phpstorm
+
+#brew cask install virtualbox
+#brew cask install virtualbox-extension-pack
+
 #brew cask install gitkraken
 #brew cask install keycaskr ## a keystroke visualizer
-#brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
+#brew cask install switchhosts
 
 #brew cask install vagrant
 #vagrant plugin install vagrant-vbguest
