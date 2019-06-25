@@ -49,6 +49,9 @@ brew cask install flash-player
 #brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
 #brew install aliwangwang
 
+#brew cask install kindle
+#brew cask install calibre
+
 #brew cask install visual-studio-code ## too slow
 #brew cask install goland
 #brew cask install rubymine
