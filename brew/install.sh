@@ -32,6 +32,7 @@ brew install openssh
 brew install cmake
 brew install ctags
 brew install fzf
+brew install ripgrep
 brew install git
 brew install perl
 brew install tldr
