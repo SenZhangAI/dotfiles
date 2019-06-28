@@ -32,6 +32,7 @@ brew install openssh
 brew install cmake
 brew install ctags
 brew install fzf
+$(brew --prefix)/opt/fzf/install
 brew install ripgrep
 brew install git
 brew install perl
@@ -93,6 +94,6 @@ brew cask install flash-player
 #######################################################################
 
 # Remove outdated versions from the cellar.
-"[Run] brew cleanup"
+echo "[Run] brew cleanup"
 brew cleanup
 
