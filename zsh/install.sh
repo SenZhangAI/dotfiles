@@ -30,6 +30,10 @@ set_zsh_default_shell() {
     fi
     echo "Change defalt shell to zsh..."
 
+    if command_installed chsh; then
+        chsh -s /bin/zsh
+    fi
+
     if [ ! -f "/etc/passwd" ]; then
         mkpasswd > /etc/passwd
     fi
