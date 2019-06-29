@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 
-if [ $# -ge 1 ]; then
-    _HTTP_PROXY_PORT_=$1
-else
-    _HTTP_PROXY_PORT_=1087 # default port is 1087
-fi
+set -e
+set -x
 
-echo export http_proxy=http://127.0.0.1:$_BREW_PROXY_PORT_
 unset http_proxy
 unset https_proxy
-
-unset _HTTP_PROXY_PORT_
 
 # vim:ft=sh
