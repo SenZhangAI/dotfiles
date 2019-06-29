@@ -147,7 +147,7 @@ platform_spec_config
 # source init.sh, move to the end line
 
 if [ -f $HOME/.bashrc ]; then
-    sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
+    sed -i '' "\:$ETC/bashrc.sh:d" $HOME/.bashrc
     echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 fi
 
