@@ -18,7 +18,6 @@ system_is() {
 
 SYSTEM='UNKNOWN'
 if system_is Cygwin; then SYSTEM='Cygwin'; fi
-
 if system_is MSYS; then SYSTEM='Msys2'; fi
 if system_is Darwin; then SYSTEM='macOS'; fi
 if system_is Ubuntu; then SYSTEM='Ubuntu'; fi

@@ -23,24 +23,6 @@ config_zsh() {
     fi
 }
 
-set_zsh_default_shell() {
-    echo "default shell is $SHELL"
-    if [[ $SHELL =~ zsh ]]; then
-        return
-    fi
-    echo "Change defalt shell to zsh..."
-
-    if command_installed chsh; then
-        chsh -s /bin/zsh
-    fi
-
-    if [ ! -f "/etc/passwd" ]; then
-        mkpasswd > /etc/passwd
-    fi
-
-    #TODO
-}
-
 custom_config_oh_my_zsh() {
     zsh_conf_dir=$HOME/oh-my-zsh-sen
     if [ -d $zsh_conf_dir ]; then
@@ -56,7 +38,6 @@ custom_config_oh_my_zsh() {
 }
 
 config_zsh
-set_zsh_default_shell
 custom_config_oh_my_zsh
 
-# vim:st=4:sw=4
+# vim: sw=4
