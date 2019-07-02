@@ -43,6 +43,7 @@ brew install tree
 brew install xz
 brew install clang-format
 brew install global # for gtags
+brew install aria2
 
 brew cask install iterm2
 brew cask install shadowsocksx-ng
@@ -64,6 +65,7 @@ brew cask install flash-player
 #brew cask install kindle
 #brew cask install calibre
 
+#brew install sqlite
 #brew install mycli
 #brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
 
