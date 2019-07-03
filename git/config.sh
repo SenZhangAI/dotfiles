@@ -31,4 +31,7 @@ git config --global credential.helper store
 echo "[Config] enable color"
 git config --global color.ui true
 
-# vim:st=4:sw=4
+echo "[Config] support zh_CN char"
+git config --global core.quotepath false
+
+# vim:sw=4
