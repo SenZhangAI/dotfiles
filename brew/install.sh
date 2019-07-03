@@ -66,6 +66,7 @@ brew cask install flash-player
 #brew cask install calibre
 
 #brew install sqlite
+#brew install mysqlworkbench
 #brew install mycli
 #brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
 
