@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+go mod edit -replace=golang.org/x/$1=github.com/golang$1@latest
+
+# vim:ft=sh
