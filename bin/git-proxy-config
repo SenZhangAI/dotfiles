@@ -6,8 +6,8 @@ else
     _GIT_PROXY_PORT_=1087 # default port is 1087
 fi
 
-echo git config --global https.proxy https://127.0.0.1:$_GIT_PROXY_PORT_
-git config --global https.proxy https://127.0.0.1:$_GIT_PROXY_PORT_
+echo git config --global https.proxy http://127.0.0.1:$_GIT_PROXY_PORT_
+git config --global https.proxy http://127.0.0.1:$_GIT_PROXY_PORT_
 echo git config --global http.proxy http://127.0.0.1:$_GIT_PROXY_PORT_
 git config --global http.proxy http://127.0.0.1:$_GIT_PROXY_PORT_
 
