@@ -3,6 +3,11 @@
 
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
 
+#go ENV
+GO111MODULE=on
+GOPROXY=https://goproxy.io
+GOPATH=/Users/zhangsen/GoWorkSpace
+
 # History Options
 #
 # Don't put duplicate lines in the history.
