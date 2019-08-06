@@ -61,6 +61,8 @@ brew cask install flash-player
 ######################## OPTIONAL APPLICATION #########################
 #brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
 #brew install aliwangwang
+#brew install node
+#brew install yarn
 
 #brew cask install kindle
 #brew cask install calibre
