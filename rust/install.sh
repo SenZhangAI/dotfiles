@@ -13,3 +13,11 @@ if command_not_installed rustc; then
         curl https://sh.rustup.rs -sSf | sh
     fi
 fi
+
+if command_installed vim; then
+    printf "Install coc rust plugin for vim... "
+    vim -c ":CocInstall coc-rls | sleep 5 | qall"
+    printf "\t\t\tDone.\n"
+fi
+
+rustup component add rls rust-analysis rust-src
