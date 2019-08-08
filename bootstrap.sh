@@ -147,7 +147,11 @@ platform_spec_config
 # source init.sh, move to the end line
 
 if [ -f $HOME/.bashrc ]; then
-    sed -i '' "\:$ETC/bashrc.sh:d" $HOME/.bashrc
+    if [ $OSTYPE == darwin* ]; then
+        sed -i '' "\:$ETC/bashrc.sh:d" $HOME/.bashrc
+    else
+        sed -i "\:$ETC/bashrc.sh:d" $HOME/.bashrc
+    fi
     echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 fi
 
