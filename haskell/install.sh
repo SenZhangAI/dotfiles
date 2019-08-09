@@ -33,8 +33,8 @@ backup_file() {
         read -p "Would you like to backup it first? [y/N] " ans
 
         if [ "$ans" == "y" ]; then
-            echo "backup your original $1 to $1-$(date +%Y%m%d)-$backup_rand-bak"
-            cp $1 $1$(date +%Y%m%d)-$backup_rand-bak
+            echo "backup your original $1 to $1-$(date +%Y%m%d).bak"
+            cp $1 "$1-$(date +%Y%m%d).bak"
         fi
 
         rm -f $1
@@ -46,11 +46,9 @@ config_haskell_stack() {
     mkdir -p $HOME/.stack
 
     conf=$HOME/.stack/config.yaml
-    if stack_need_conf_mirrors $conf; then
-        echo "Configuring stack ..."
-        backup_file $conf
-        cat $base_dir/stack_config.yaml > $conf
-    fi
+    echo "Configuring stack ..."
+    backup_file $conf
+    cat $base_dir/stack_config.yaml > $conf
     unset conf
 }
 config_haskell_stack

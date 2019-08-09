@@ -14,20 +14,12 @@ templates:
     github-username: "SenZhangAI"
 
 system-ghc: true
-ignore-revision-mismatch: true
 
 nix:
-  enable: true
+    #enable: true
 
-###ADD THIS IF YOU LIVE IN CHINA
-#### @see https://docs.haskellstack.org/en/stable/install_and_upgrade/#china-based-users
+# ADD MIRROT
+# stack version must >= v2.1.1, see https://mirrors.tuna.tsinghua.edu.cn/help/stackage/
 setup-info: "http://mirrors.tuna.tsinghua.edu.cn/stackage/stack-setup.yaml"
 urls:
   latest-snapshot: http://mirrors.tuna.tsinghua.edu.cn/stackage/snapshots.json
-  lts-build-plans: http://mirrors.tuna.tsinghua.edu.cn/stackage/lts-haskell/
-  nightly-build-plans: http://mirrors.tuna.tsinghua.edu.cn/stackage/stackage-nightly/
-
-package-indices:
- - name: Tsinghua
-   download-prefix: http://mirrors.tuna.tsinghua.edu.cn/hackage/package/
-   http: http://mirrors.tuna.tsinghua.edu.cn/hackage/00-index.tar.gz
