@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -e
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 source $base_dir/../utils/smart_install.sh
@@ -26,12 +27,28 @@ stack_need_conf_mirrors() {
     fi
 }
 
+backup_file() {
+    if [ -L $1 ] || [ -f $1 ]; then
+        echo "There's a original file [$1] exist."
+        read -p "Would you like to backup it first? [y/N] " ans
+
+        if [ "$ans" == "y" ]; then
+            echo "backup your original $1 to $1-$(date +%Y%m%d)-$backup_rand-bak"
+            cp $1 $1$(date +%Y%m%d)-$backup_rand-bak
+        fi
+
+        rm -f $1
+    fi
+    return 0;
+}
+
 config_haskell_stack() {
     mkdir -p $HOME/.stack
 
     conf=$HOME/.stack/config.yaml
     if stack_need_conf_mirrors $conf; then
         echo "Configuring stack ..."
+        backup_file $conf
         cat $base_dir/stack_config.yaml > $conf
     fi
     unset conf
@@ -94,3 +111,5 @@ if command_not_installed hie-wapper; then
         nix-env -iA hies -f https://github.com/domenkozar/hie-nix/tarball/master
     fi
 fi
+
+set +e
