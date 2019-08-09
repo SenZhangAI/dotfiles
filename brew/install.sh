@@ -56,9 +56,10 @@ brew cask install iina
 brew cask install teamviewer
 brew cask install google-chrome
 brew cask install thunder
-brew cask install flash-player
 
 ######################## OPTIONAL APPLICATION #########################
+#brew cask install flash-player
+
 #brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
 #brew install aliwangwang
 #brew install node
