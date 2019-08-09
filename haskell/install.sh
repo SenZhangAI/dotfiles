@@ -90,10 +90,8 @@ if command_not_installed runghc; then
     stack install runghc
 fi
 
-if command_not_installed hindent; then
-    # > 1G memory
-    stack install hindent
-    #stack build --copy-compiler-tool hindent
+if command_not_installed stylish-haskell; then
+    stack install stylish-haskell
 fi
 
 if command_not_installed cabal; then
