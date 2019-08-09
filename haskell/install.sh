@@ -53,18 +53,18 @@ config_haskell_stack() {
     fi
     unset conf
 }
+config_haskell_stack
 
 install_haskell() {
     if command_not_installed stack; then
         curl -sSL https://get.haskellstack.org/ | sh
-        config_haskell_stack
         stack setup
     elif usr_confirm "stack has already installed, would you like force reinstall?"; then
         curl -sSL https://get.haskellstack.org/ | sh -s - -f
-        config_haskell_stack
         stack setup
     fi
 }
+install_haskell
 
 install_nix() {
     if command_not_installed nix; then
@@ -87,8 +87,6 @@ install_nix() {
             ;;
     esac
 }
-
-install_haskell
 
 if command_not_installed runghc; then
     stack install runghc
