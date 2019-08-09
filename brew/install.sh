@@ -48,7 +48,6 @@ brew install aria2
 brew cask install iterm2
 brew cask install shadowsocksx-ng
 brew cask install alfred
-brew cask install hammerspoon
 brew cask install qq
 brew cask install wechat
 brew cask install nutstore && open /usr/local/Caskroom/nutstore/latest &
@@ -64,6 +63,8 @@ brew cask install thunder
 #brew install aliwangwang
 #brew install node
 #brew install yarn
+#brew install ghc
+#brew cask install hammerspoon
 
 #brew cask install kindle
 #brew cask install calibre
