@@ -45,6 +45,9 @@ brew install clang-format
 brew install global # for gtags
 brew install aria2
 
+brew install llvm # for clangd clang-format
+cp /usr/local/Cellar/llvm/*/bin/* ~/bin
+
 brew cask install iterm2
 brew cask install shadowsocksx-ng
 brew cask install alfred
