@@ -10,28 +10,29 @@ fi
 origin_base_dir=$base_dir
 base_dir=$(dirname "${BASH_SOURCE[0]}")
 source $base_dir/platform.sh
+source $base_dir/print.sh
 base_dir=$origin_base_dir
 
 command_not_installed() {
-    printf "Check if [\e[32m$1\e[0m] installed..."
+    printf "%-48s" "Check command $1..."
     found=$(which $1 2>/dev/null)
     if [ -z "$found" ]; then
-        printf "%-24s Not Installed\n"
+        printf "$(RED "Not Installed")\n"
         return 0
     else
-        printf "%-24s     Installed\n"
+        printf "$(GREEN "Installed")\n"
         return 1
     fi
 }
 
 command_installed() {
-    printf "Check if [$1] installed..."
+    printf "%-48s" "Check command $1..."
     found=$(which $1 2>/dev/null)
     if [ -z "$found" ]; then
-        printf "%-24s Not Installed\n"
+        printf "$(RED "Not Installed")\n"
         return 1
     else
-        printf "%-24s     Installed\n"
+        printf "$(GREEN "Installed")\n"
         return 0
     fi
 }
