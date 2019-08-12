@@ -1,37 +1,49 @@
 #!/usr/bin/env bash
 
-echo -e "[Check] \033[32mgit global user.email\033[0m configured?"
+base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+source $base_dir/../utils/platform.sh
+source $base_dir/../utils/smart_install.sh
+source $base_dir/../utils/usr_confirm.sh
+source $base_dir/../utils/print.sh
+
+auto_install git
+
+printf "%-48s" "[Check] git global user.email configured?..."
 search=`git config --global user.email`
-
-    echo "[Config] user.email"
 if [ -z "$search" ]; then
-    echo -e "Not Found.\n"
+    printf "$(RED "Not Configured")\n"
+    echo "[Config] user.email..."
     git config --global user.email "szhang.hust@gmail.com"
+    printf "$(GREEN "Done")\n"
 else
-    echo -e "Found.\n"
+    printf "$(GREEN "Configured")\n"
 fi
 
-echo -e "[Check] \033[32mgit global user.name\033[0m configured?"
-
-echo "[Config] user.name"
+printf "%-48s" "[Check] git global user.name configured?..."
 search=`git config --global user.name`
 if [ -z "$search" ]; then
+    printf "$(RED "Not Configured")\n"
+    echo "[Config] user.name..."
     git config --global user.name "Sen Zhang"
+    printf "$(GREEN "Done")\n"
 else
-    echo -e "Found.\n"
+    printf "$(GREEN "Configured")\n"
 fi
 
 
-echo "[Config] save username and password"
+printf "%-48s" "[Config] save username and password..."
 # store username and password so I won't need to type username and password again.
 #git config --global credential.helper 'cache --timeout 7200'
 git config --global credential.helper store
+printf "$(GREEN "Done")\n"
 
-echo "[Config] enable color"
+printf "%-48s" "[Config] enable ui color..."
 git config --global color.ui true
+printf "$(GREEN "Done")\n"
 
-echo "[Config] support zh_CN char"
+printf "%-48s" "[Config] enable zh-cn character set..."
 git config --global core.quotepath false
+printf "$(GREEN "Done")\n"
 
 # vim:sw=4
