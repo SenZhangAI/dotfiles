@@ -13,7 +13,7 @@ printf "%-48s" "[Check] git global user.email configured?..."
 search=`git config --global user.email`
 if [ -z "$search" ]; then
     printf "$(RED "Not Configured")\n"
-    echo "[Config] user.email..."
+    printf "%-48s" "[Config] user.email..."
     git config --global user.email "szhang.hust@gmail.com"
     printf "$(GREEN "Done")\n"
 else
@@ -24,7 +24,7 @@ printf "%-48s" "[Check] git global user.name configured?..."
 search=`git config --global user.name`
 if [ -z "$search" ]; then
     printf "$(RED "Not Configured")\n"
-    echo "[Config] user.name..."
+    printf "%-48s" "[Config] user.name..."
     git config --global user.name "Sen Zhang"
     printf "$(GREEN "Done")\n"
 else

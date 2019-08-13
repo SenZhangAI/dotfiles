@@ -6,9 +6,7 @@ base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $base_dir/../utils/smart_install.sh
 source $base_dir/../utils/usr_confirm.sh
 
-if command_not_installed perl; then
-    smart_install perl
-fi
+auto_install perl
 
 ## check if stack has configured mirrors to speed up
 stack_need_conf_mirrors() {

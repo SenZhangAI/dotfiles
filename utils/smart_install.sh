@@ -60,3 +60,16 @@ smart_install() {
     eval "$__INSTALL__ $@"
 }
 
+must_install() {
+    if command_not_installed $1; then
+        printf "\033[33m$1\033[0m need to be installed first!\n"
+        exit 233
+    fi
+}
+
+auto_install() {
+    if command_not_installed $1; then
+        smart_install $1
+    fi
+}
+

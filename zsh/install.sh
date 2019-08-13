@@ -11,15 +11,16 @@ if command_not_installed zsh; then
 fi
 
 config_zsh() {
-    printf "[Check] \033[32mzsh\033[0m configured?"
+    printf "%-48s" "Check if zsh configured..."
 
     if [ -d "$HOME/.oh-my-zsh" ]; then
-        printf "%-20s Yes.\n"
+        printf "$(GREEN "Configured")\n"
     else
-        printf "%-20s No.\n"
-        printf "Configured zsh...\n"
+        printf "$(RED "Not Configured")\n"
+        printf "%-48s"  "[Config] Configured zsh...\n"
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &
         wait
+        printf "$(GREEN "Done")\n"
     fi
 }
 
