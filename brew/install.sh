@@ -42,7 +42,7 @@ brew install p7zip # extract .7z
 brew install clang-format
 brew install global # gtags
 brew install aria2
-brew install llvm && sudo cp /usr/local/Cellar/llvm/*/bin/* ~/bin # clangd clang-format
+brew install llvm && sudo ln -sfn /usr/local/Cellar/llvm/*/bin/* ~/bin # clangd clang-format
 brew cask install iterm2
 brew cask install shadowsocksx-ng
 brew cask install alfred
