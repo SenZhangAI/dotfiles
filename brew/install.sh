@@ -3,15 +3,12 @@
 # using proxy
 #export ALL_PROXY=http://127.0.0.1:1087
 
-echo "Change mirrors for Homebrew"
-#see https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
-cd "$(brew --repo)"
-git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+echo "[Config] change mirrors for Homebrew..."
+#see https://mirrors.ustc.edu.cn
+cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-cask.git
 
 # disable homebrew update, it's too slow!
 export HOMEBREW_NO_AUTO_UPDATE=true
