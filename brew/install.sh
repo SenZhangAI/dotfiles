@@ -41,6 +41,7 @@ brew install telnet
 brew install tmux
 brew install tree
 brew install xz
+brew install p7zip # extract .7z
 brew install clang-format
 brew install global # for gtags
 brew install aria2
