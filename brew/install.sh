@@ -77,6 +77,7 @@ brew cask install thunder
 #brew install go
 #brew cask install goland
 #brew install ruby
+#brew cask install julia
 #brew cask install rubymine
 #brew cask install clion
 #brew cask install pycharm-ce
