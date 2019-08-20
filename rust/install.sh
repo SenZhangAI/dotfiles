@@ -14,10 +14,4 @@ if command_not_installed rustc; then
     fi
 fi
 
-if command_installed vim; then
-    printf "Install coc rust plugin for vim... "
-    vim -c "CocInstall -sync coc-rls | qall"
-    printf "\t\t\tDone.\n"
-fi
-
 rustup component add rls rust-analysis rust-src
