@@ -67,12 +67,12 @@ init_install_config() {
         darwin*)
             #install brew
             if command_not_installed brew; then
-                printf "[Install] install brew...\n"
+                printf "%-48s" "[Install] install brew..."
                 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
                 printf "$(GREEN "Done")\n"
             fi
 
-            echo "[Config] change mirrors for Homebrew..."
+            printf "%-48s" "[Config] change mirrors for Homebrew..."
             #see https://mirrors.ustc.edu.cn
             cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
             cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
