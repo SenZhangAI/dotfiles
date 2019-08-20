@@ -19,3 +19,7 @@ Cygwin need to install `wget` and `git ` first!
 * macOS
 * Cygwin
 * MSYS2
+
+## Custom settings
+
+modify `config.sh` in root folder and change settings as you like.
