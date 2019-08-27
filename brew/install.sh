@@ -39,10 +39,14 @@ brew install tmux
 brew install tree
 brew install xz
 brew install p7zip # extract .7z
+brew install unrar
 brew install clang-format
 brew install global # gtags
 brew install aria2
 brew install llvm && sudo ln -sfn /usr/local/Cellar/llvm/*/bin/* ~/bin # clangd clang-format
+brew install go
+
+brew cask install julia
 brew cask install iterm2
 brew cask install shadowsocksx-ng
 brew cask install alfred
@@ -53,6 +57,11 @@ brew cask install iina
 brew cask install teamviewer
 brew cask install google-chrome
 brew cask install thunder
+
+## NTFS Support for MAC
+### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
+brew cask install osxfuse
+brew install ntfs-3g
 
 ######################## OPTIONAL APPLICATION #########################
 #brew cask install flash-player
@@ -74,10 +83,9 @@ brew cask install thunder
 
 #brew install protobuf
 #brew cask install visual-studio-code ## too slow
-#brew install go
 #brew cask install goland
 #brew install ruby
-#brew cask install julia
+#brew install nim
 #brew cask install rubymine
 #brew cask install clion
 #brew cask install pycharm-ce
@@ -93,10 +101,6 @@ brew cask install thunder
 #brew cask install vagrant
 #vagrant plugin install vagrant-vbguest
 
-## NTFS Support for MAC
-### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
-#brew cask install osxfuse
-#brew install ntfs-3g
 #######################################################################
 
 # Remove outdated versions from the cellar.
