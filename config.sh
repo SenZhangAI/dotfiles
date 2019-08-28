@@ -6,6 +6,7 @@
 # If git global user.name or user.email already exists, it will just ignore.
 GLOBAL_GIT_USER_NAME="Sen Zhang"
 GLOBAL_GIT_USER_EMAIL="szhang.hust@gmail.com"
+GLOBAL_GIT_GITHUB_USER="SenZhangAI" # github user name
 
 # Help cache user name and password for git, so we won't need to type them again,
 # 'store' will cache user name and password permanently.

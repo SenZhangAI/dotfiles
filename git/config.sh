@@ -35,6 +35,16 @@ else
     printf "$(GREEN "Configured")\n"
 fi
 
+printf "%-48s" "[Check] git global github.user configured?..."
+search=`git config --global github.user`
+if [ -z "$search" ]; then
+    printf "$(RED "Not Configured")\n"
+    printf "%-48s" "[Config] user.name..."
+    git config --global github.user "$GLOBAL_GIT_GITHUB_USER"
+    printf "$(GREEN "Done")\n"
+else
+    printf "$(GREEN "Configured")\n"
+fi
 
 printf "%-48s" "[Config] save username and password..."
 # store username and password so I won't need to type username and password again.
