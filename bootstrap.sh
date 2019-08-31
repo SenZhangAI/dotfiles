@@ -129,6 +129,17 @@ cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
 cp bootstrap.sh $BIN/
 
+# solve `go get` problem
+install_git_wapper() {
+    if command_installed go; then
+        # go is excutable
+        go build -o git ./bin/git/git.go
+        # MAKE SURE $BIN is in $PATH and is the first directory that can find command git
+        mv git $BIN/
+    fi
+}
+install_git_wapper
+
 _set_go_env_for_cygwin() {
     batfile=cygwin_set_go_env.bat
     GOBASEPATH="$HOME/GoWorkSpace"
@@ -152,12 +163,6 @@ platform_spec_config() {
         cygwin*)
             cp -rf spec/cygwin/bin/* $BIN/
             _set_go_env_for_cygwin
-
-            if command_installed go; then
-                # go is excutable
-                go build -o git.exe ./spec/cygwin/git.go
-                mv git.exe $BIN/
-            fi
             ;;
         darwin*)
             cp -rf spec/macOS/bin/* $BIN/
@@ -168,11 +173,9 @@ platform_spec_config() {
             ;;
     esac
 }
-
 platform_spec_config
 
 # source init.sh, move to the end line
-
 if [ -f $HOME/.bashrc ]; then
     if [[ "$OSTYPE" =~ "darwin" ]]; then
         sed -i '' "\:$ETC/bashrc.sh:d" $HOME/.bashrc

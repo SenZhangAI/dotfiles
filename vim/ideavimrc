@@ -11,7 +11,7 @@ set clipboard+=unnamed
 
 set surround " ideavim special for ys,cs,ds,S
 
-let mapleader=","
+let mapleader=','
 " important! using :actionlist find out all actions
 
 " clear the highlighted search result
@@ -21,7 +21,7 @@ nnoremap <Space>hh :nohlsearch<CR>
 inoremap jk <Esc>
 
 " Comment
-nnoremap \\\\ :action CommentByLineComment<CR>
+nnoremap gc :action CommentByLineComment<CR>
 
 " Reformat
 nnoremap <leader>af :action ReformatCode<CR>
