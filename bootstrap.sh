@@ -77,7 +77,8 @@ init_install_config() {
             cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
             cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
             cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-            export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-cask.git
+            export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+            #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-cask.git
             printf "$(GREEN "Done")\n"
 
             if [ -f $HOME/.local/dotfiles/spec/macOS/.brew-update ]; then
@@ -107,7 +108,6 @@ init_install_config() {
             ;;
     esac
 }
-
 init_install_config
 
 ETC=$HOME/.local/etc
@@ -133,7 +133,7 @@ cp bootstrap.sh $BIN/
 install_git_wapper() {
     if command_installed go; then
         # go is excutable
-        go build -o git.exe ./bin/git/git.go
+        go build -o ./git.exe ./git/gitwapper/git.go
         # MAKE SURE $BIN is in $PATH and is the first directory that can find command git
         mv git.exe $BIN/git
     fi
