@@ -133,9 +133,9 @@ cp bootstrap.sh $BIN/
 install_git_wapper() {
     if command_installed go; then
         # go is excutable
-        go build -o git ./bin/git/git.go
+        go build -o git.exe ./bin/git/git.go
         # MAKE SURE $BIN is in $PATH and is the first directory that can find command git
-        mv git $BIN/
+        mv git.exe $BIN/git
     fi
 }
 install_git_wapper
