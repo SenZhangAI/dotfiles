@@ -11,9 +11,9 @@ bakfile() {
 
 system_is() {
     if [[ $(uname -a 2>/dev/null) =~ $1 ]]; then
-        return 1
-    else
         return 0
+    else
+        return 1
     fi
 }
 
