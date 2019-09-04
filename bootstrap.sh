@@ -91,20 +91,28 @@ init_install_config() {
             fi
 
             ;;
-        msys*)
-            bakfile /etc/pacman.d/mirrorlist.mingw32
-            bakfile /etc/pacman.d/mirrorlist.mingw64
-            bakfile /etc/pacman.d/mirrorlist.msys
-            echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686' > /etc/pacman.d/mirrorlist.mingw32
-            echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64' > /etc/pacman.d/mirrorlist.mingw64
-            echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
-
-            pacman -Syu --noconfirm
-            if command_not_installed git; then
-                pacman -Sy --noconfirm git
-            fi
-            ;;
         *)
+            if command_not_installed git; then
+                if command_installed pacman; then
+                    bakfile /etc/pacman.d/mirrorlist.mingw32
+                    bakfile /etc/pacman.d/mirrorlist.mingw64
+                    bakfile /etc/pacman.d/mirrorlist.msys
+                    echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686' > /etc/pacman.d/mirrorlist.mingw32
+                    echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64' > /etc/pacman.d/mirrorlist.mingw64
+                    echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
+
+                    pacman -Syu --noconfirm
+                    if command_not_installed git; then
+                        pacman -Sy --noconfirm git
+                    fi
+
+                elif command_installed yum; then
+                    yum -y install git
+
+                elif command_installed apt-get; then
+                    apt-get -y install git
+                fi
+            fi
             ;;
     esac
 }
