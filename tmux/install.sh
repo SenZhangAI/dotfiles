@@ -8,8 +8,6 @@ source $base_dir/../utils/usr_confirm.sh
 
 _install_tmux_from_source() {
     echo "Installing tmux from source..."
-    smart_install ncurses ncurses-devel libevent libevent-devel automake
-
     install_tmux_dir=$HOME/.tmp/tmux
     if [ -d $install_tmux_dir ]; then rm -rf $install_tmux_dir; fi
     mkdir $HOME/.tmp
@@ -42,13 +40,13 @@ case $SYSTEM in
                 echo "tmux version 1.X is old, try to uninstall it..."
                 yum remove -y tmux
                 _check_and_kill_running_tmux
-                _install_tmux_from_source
             fi
             unset _tmux_version
         else
             echo "tmux is not installed yet."
-            _install_tmux_from_source
         fi
+        smart_install ncurses ncurses-devel libevent libevent-devel automake byacc
+        _install_tmux_from_source
         ;;
     macOS)
         #makes pbcopy and pbpaste work again within tmux.
