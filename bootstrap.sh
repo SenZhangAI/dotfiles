@@ -29,24 +29,24 @@ RED() {
 
 command_installed() {
     printf "%-48s" "Check command $1..."
-    found=$(which $1 2>/dev/null)
-    if [ -z "$found" ]; then
-        printf "$(RED "Not Installed")\n"
+    command -v $1 >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        printf "Not Installed\n"
         return 1
     else
-        printf "$(GREEN "Installed")\n"
+        printf "Installed\n"
         return 0
     fi
 }
 
 command_not_installed() {
     printf "%-48s" "Check command $1..."
-    found=$(which $1 2>/dev/null)
-    if [ -z "$found" ]; then
-        printf "$(RED "Not Installed")\n"
+    command -v $1 >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        printf "Not Installed\n"
         return 0
     else
-        printf "$(GREEN "Installed")\n"
+        printf "Installed\n"
         return 1
     fi
 }

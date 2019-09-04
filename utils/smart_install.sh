@@ -15,8 +15,8 @@ base_dir=$origin_base_dir
 
 command_not_installed() {
     printf "%-48s" "Check command $1..."
-    found=$(which $1 2>/dev/null)
-    if [ -z "$found" ]; then
+    command -v $1 >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
         printf "$(RED "Not Installed")\n"
         return 0
     else
@@ -27,8 +27,8 @@ command_not_installed() {
 
 command_installed() {
     printf "%-48s" "Check command $1..."
-    found=$(which $1 2>/dev/null)
-    if [ -z "$found" ]; then
+    command -v $1 >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
         printf "$(RED "Not Installed")\n"
         return 1
     else
