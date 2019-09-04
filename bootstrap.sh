@@ -59,62 +59,79 @@ must_install() {
 }
 
 init_install_config() {
-    case $OSTYPE in
-        cygwin*)
-            must_install git
-            must_install wget
-            ;;
-        darwin*)
-            #install brew
-            if command_not_installed brew; then
-                printf "%-48s" "[Install] install brew..."
-                /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-                printf "$(GREEN "Done")\n"
-            fi
+    if system_is Cygwin; then
+        must_install git
+        must_install wget
 
-            printf "%-48s" "[Config] change mirrors for Homebrew..."
-            #see https://mirrors.ustc.edu.cn
-            cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
-            cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-            cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-            export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-            #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-cask.git
+    elif system_is Ubuntu; then
+        if command_not_installed git; then
+            apt-get -y install git
+        fi
+
+    elif system_is Centos; then
+        if command_not_installed git; then
+            yum -y install git
+        fi
+
+    elif system_is Darwin;then
+        if command_not_installed brew; then
+            printf "%-48s" "[Install] install brew..."
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
             printf "$(GREEN "Done")\n"
+        fi
+        if command_not_installed git; then
+            brew install git
+        fi
+        printf "%-48s" "[Config] change mirrors for Homebrew..."
+        #see https://mirrors.ustc.edu.cn
+        cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+        cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+        cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+        export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+        #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-cask.git
+        printf "$(GREEN "Done")\n"
+        if [ -f $HOME/.local/dotfiles/spec/macOS/.brew-update ]; then
+            export HOMEBREW_NO_AUTO_UPDATE=true
+        else
+            brew tap homebrew/cask
+            brew update
+            brew upgrade
+        fi
 
-            if [ -f $HOME/.local/dotfiles/spec/macOS/.brew-update ]; then
-                export HOMEBREW_NO_AUTO_UPDATE=true
-            else
-                brew tap homebrew/cask
-                brew update
-                brew upgrade
-                brew install git
-            fi
+    elif system_is MSYS; then
+        bakfile /etc/pacman.d/mirrorlist.mingw32
+        bakfile /etc/pacman.d/mirrorlist.mingw64
+        bakfile /etc/pacman.d/mirrorlist.msys
+        echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686' > /etc/pacman.d/mirrorlist.mingw32
+        echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64' > /etc/pacman.d/mirrorlist.mingw64
+        echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
+        pacman -Syu --noconfirm
+        if command_not_installed git; then
+            pacman -Sy --noconfirm git
+        fi
 
-            ;;
-        *)
-            if command_not_installed git; then
-                if command_installed pacman; then
-                    bakfile /etc/pacman.d/mirrorlist.mingw32
-                    bakfile /etc/pacman.d/mirrorlist.mingw64
-                    bakfile /etc/pacman.d/mirrorlist.msys
-                    echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686' > /etc/pacman.d/mirrorlist.mingw32
-                    echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64' > /etc/pacman.d/mirrorlist.mingw64
-                    echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch' > /etc/pacman.d/mirrorlist.msys
-
-                    pacman -Syu --noconfirm
-                    if command_not_installed git; then
-                        pacman -Sy --noconfirm git
-                    fi
-
-                elif command_installed yum; then
-                    yum -y install git
-
-                elif command_installed apt-get; then
-                    apt-get -y install git
-                fi
-            fi
-            ;;
-    esac
+    elif system_is Arch; then
+        cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+        echo 'Server = http://mirrors.163.com/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+        echo 'Server = http://mirrors.cqu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = https://mirrors.cqu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = http://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = https://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = http://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = http://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = https://mirrors.xjtu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        echo 'Server = http://mirrors.zju.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+        pacman -Syyu --noconfirm
+        pacman -S pacman --noconfirm
+        pacman-db-upgrade
+        if command_not_installed git; then
+            pacman -Sy --noconfirm git
+        fi
+    fi
 }
 init_install_config
 
