@@ -10,14 +10,12 @@ bakfile() {
 }
 
 system_is() {
-    test=$(uname -a 2>/dev/null | grep -i $1)
-    if [ -z "$test" ]; then
+    if [[ $(uname -a 2>/dev/null) =~ $1 ]]; then
         return 1
     else
         return 0
     fi
 }
-
 
 GREEN() {
     printf "\033[32m$1\033[0m"
@@ -128,9 +126,7 @@ init_install_config() {
         pacman -Syyu --noconfirm
         pacman -S pacman --noconfirm
         pacman-db-upgrade
-        if command_not_installed git; then
-            pacman -Sy --noconfirm git
-        fi
+        pacman -Sy --noconfirm git
     fi
 }
 init_install_config
