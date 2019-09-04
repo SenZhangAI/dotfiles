@@ -35,18 +35,22 @@ case $SYSTEM in
     Centos)
         if command_installed tmux; then
             _tmux_version=$(tmux -V)
-            printf "Check [tmux] version...%-34s$_tmux_version\n"
+            printf "%-48s" "Check [tmux] version..."
+            printf "$(GREEN $_tmux_version)\n"
             if [[ "$_tmux_version" =~ 1\.[0-9]* ]]; then
                 echo "tmux version 1.X is old, try to uninstall it..."
                 yum remove -y tmux
                 _check_and_kill_running_tmux
+
+                smart_install ncurses ncurses-devel libevent libevent-devel automake byacc
+                _install_tmux_from_source
             fi
             unset _tmux_version
         else
             echo "tmux is not installed yet."
+            smart_install ncurses ncurses-devel libevent libevent-devel automake byacc
+            _install_tmux_from_source
         fi
-        smart_install ncurses ncurses-devel libevent libevent-devel automake byacc
-        _install_tmux_from_source
         ;;
     macOS)
         #makes pbcopy and pbpaste work again within tmux.
@@ -62,19 +66,13 @@ case $SYSTEM in
         ;;
 esac
 
-printf "Check if [tmux] configured..."
-
+printf "%-48s" "Configured tmux..."
 cp $base_dir/.tmux.conf $HOME
+printf "$(GREEN "Done")\n"
 
-#if [ -d "$HOME/.tmux" ]; then
-#    printf "%-27s Yes.\n"
-#else
-#    printf "%-27s No.\n"
-#    echo -e "Config tmux..."
-#    cd $HOME
-#    git clone --depth=1 https://github.com/gpakosz/.tmux.git
-#    ln -s -f .tmux/.tmux.conf
-#    cp .tmux/.tmux.conf.local .
-#    printf "Config tmux Done.\n"
-#fi
-
+# echo -e "Config tmux..."
+# cd $HOME
+# git clone --depth=1 https://github.com/gpakosz/.tmux.git
+# ln -s -f .tmux/.tmux.conf
+# cp .tmux/.tmux.conf.local .
+# printf "Config tmux Done.\n"
