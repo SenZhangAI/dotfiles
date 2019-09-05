@@ -8,11 +8,10 @@ else
 fi
 
 system_is() {
-    test=$(uname -a 2>/dev/null | grep -i $1)
-    if [ -z "$test" ]; then
-        return 1
-    else
+    if [[ $(uname -a 2>/dev/null) =~ $1 ]]; then
         return 0
+    else
+        return 1
     fi
 }
 
@@ -24,6 +23,7 @@ if system_is Ubuntu; then SYSTEM='Ubuntu'; fi
 if system_is Centos; then SYSTEM='Centos'; fi
 if system_is Arch; then SYSTEM='Arch'; fi
 
+# some system can not get by uname -a, need more information
 if [[ $SYSTEM == 'UNKNOWN' ]]; then
     if [ -f "/etc/redhat-release" ]; then
         test=$(cat /etc/redhat-release | grep -i "Centos")
@@ -31,10 +31,13 @@ if [[ $SYSTEM == 'UNKNOWN' ]]; then
             SYSTEM='Centos'
         fi
     fi
+    if [ -d "/etc/pacman.d" && ! -f "/etc/pacman.d/mirrorlist.mingw32" ]; then
+        SYSTEM='Arch'
+    fi
 fi
 
 if [[ $SYSTEM == 'UNKNOWN' ]]; then
-    echo "Error: system type unknown: $(uname)"
+    echo "Error: system type still Unknown: $(uname)"
 else
     echo "Detected System: $SYSTEM"
 fi

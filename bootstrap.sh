@@ -58,7 +58,6 @@ must_install() {
 
 init_install_config() {
     if system_is Cygwin; then
-        must_install git
         must_install wget
 
     elif system_is Ubuntu; then
@@ -130,6 +129,9 @@ init_install_config() {
     fi
 }
 init_install_config
+
+# check if git installed
+must_install git
 
 ETC=$HOME/.local/etc
 BIN=$HOME/.local/bin
