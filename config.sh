@@ -13,4 +13,4 @@ GLOBAL_GIT_GITHUB_USER="SenZhangAI" # github user name
 # 'cache --timeout 7200' will cache user name and password in 7200 seconds(2 hours).
 GLOGAL_GIT_CREDENTIAL_CACHE="store"
 
-SSH_KEY_EMAIL=$GIT_USER_EMAIL
+SSH_KEY_EMAIL=$GLOBAL_GIT_USER_EMAIL
