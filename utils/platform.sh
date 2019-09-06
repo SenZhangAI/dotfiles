@@ -31,7 +31,7 @@ if [[ $SYSTEM == 'UNKNOWN' ]]; then
             SYSTEM='Centos'
         fi
     fi
-    if [ -d "/etc/pacman.d" && ! -f "/etc/pacman.d/mirrorlist.mingw32" ]; then
+    if [[ -d "/etc/pacman.d" && ! -f "/etc/pacman.d/mirrorlist.mingw32" ]]; then
         SYSTEM='Arch'
     fi
 fi
