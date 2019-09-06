@@ -66,7 +66,7 @@ init_install_config() {
             apt-get -y install git
         fi
 
-    elif system_is Centos; then
+    elif system_is CentOS; then
         if command_not_installed git; then
             yum -y install git
         fi

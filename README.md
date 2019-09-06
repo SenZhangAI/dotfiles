@@ -19,7 +19,7 @@ Cygwin need to install `wget` and `git ` first!
 * macOS
 * Cygwin
 * MSYS2
-* Centos 7
+* CentOS 7
 * ArchLinux
 * Ubuntu
 

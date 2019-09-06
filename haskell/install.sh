@@ -76,7 +76,7 @@ install_nix() {
             ;;
         Ubuntu*)
             ;;
-        Centos*)
+        CentOS*)
             ;;
         macOS*)
             . $HOME/.nix-profile/etc/profile.d/nix.sh

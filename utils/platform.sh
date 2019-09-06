@@ -22,15 +22,15 @@ if system_is Cygwin; then SYSTEM='Cygwin'; fi
 if system_is MSYS; then SYSTEM='Msys2'; fi
 if system_is Darwin; then SYSTEM='macOS'; fi
 if system_is Ubuntu; then SYSTEM='Ubuntu'; fi
-if system_is Centos; then SYSTEM='Centos'; fi
+if system_is CentOS; then SYSTEM='CentOS'; fi
 if system_is Arch; then SYSTEM='Arch'; fi
 
 # some system can not get by uname -a, need more information
 if [[ $SYSTEM == 'UNKNOWN' ]]; then
     if [ -f "/etc/redhat-release" ]; then
         test=$(cat /etc/redhat-release)
-        if [[ $test =~ Centos ]]; then
-            SYSTEM='Centos'
+        if [[ $test =~ CentOS ]]; then
+            SYSTEM='CentOS'
         fi
     fi
     if [[ -d "/etc/pacman.d" && ! -f "/etc/pacman.d/mirrorlist.mingw32" ]]; then

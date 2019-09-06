@@ -50,7 +50,7 @@ check_dependent() {
         case $SYSTEM in
             Cygwin)
                 ;;
-            Centos)
+            CentOS)
                 yum install -y gcc gcc-c++ ruby ruby-devel lua lua-devel  \
                     ctags git python python-devel \
                     tcl-devel ncurses-devel \
@@ -87,7 +87,7 @@ check_dependent() {
                 smart_install python3
                 smart_install python27-devel
                 ;;
-            Centos)
+            CentOS)
                 sudo yum -y install epel-release
                 sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm || echo "ignore error"
                 sudo yum -y install python36u

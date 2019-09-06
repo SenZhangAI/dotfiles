@@ -47,7 +47,7 @@ case $SYSTEM in
     Ubuntu*)
         __INSTALL__="pacman -Sy "
         ;;
-    Centos*)
+    CentOS*)
         __INSTALL__="yum install -y "
         #todo
         ;;

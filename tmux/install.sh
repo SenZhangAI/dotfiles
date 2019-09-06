@@ -32,7 +32,7 @@ _check_and_kill_running_tmux() {
 }
 
 case $SYSTEM in
-    Centos)
+    CentOS)
         if command_installed tmux; then
             _tmux_version=$(tmux -V)
             printf "%-48s" "Check [tmux] version..."
