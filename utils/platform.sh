@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+
+shopt -s nocasematch
 
 #include once
 if [ -z "$_PLATFORM_LOADED" ]; then
@@ -26,8 +28,8 @@ if system_is Arch; then SYSTEM='Arch'; fi
 # some system can not get by uname -a, need more information
 if [[ $SYSTEM == 'UNKNOWN' ]]; then
     if [ -f "/etc/redhat-release" ]; then
-        test=$(cat /etc/redhat-release | grep -i "Centos")
-        if [ ! -z "$test" ]; then
+        test=$(cat /etc/redhat-release)
+        if [[ $test =~ Centos ]]; then
             SYSTEM='Centos'
         fi
     fi
@@ -42,3 +44,4 @@ else
     echo "Detected System: $SYSTEM"
 fi
 
+shopt -u nocasematch

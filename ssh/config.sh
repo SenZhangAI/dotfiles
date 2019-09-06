@@ -14,9 +14,11 @@ if command_not_installed ssh; then
 fi
 
 printf "%-48s" "Check if ssh configured..."
-search=`cat $HOME/.ssh/id_rsa.pub | grep "$SSH_KEY_EMAIL"`
+search=`cat $HOME/.ssh/id_rsa.pub`
 
-if [ -z "$search" ]; then
+if [[ $search =~ "$SSH_KEY_EMAIL" ]]; then
+    printf "$(GREEN "Configured")\n"
+else
     printf "$(RED "Not Configured")\n"
 
     printf "%-48s" "[Config] add ssh key..."
@@ -24,8 +26,6 @@ if [ -z "$search" ]; then
     eval $(ssh-agent -s)
     ssh-add ~/.ssh/id_rsa
     printf "$(GREEN "Done")\n"
-else
-    printf "$(GREEN "Configured")\n"
 fi
 
 _copy=""

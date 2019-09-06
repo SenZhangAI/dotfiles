@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
+shopt -s nocasematch
 
 bakfile() {
     if [ ! -f $1.bak ]; then
@@ -207,6 +208,8 @@ if [ -f $HOME/.bashrc ]; then
     fi
     echo "source $ETC/bashrc.sh" >> $HOME/.bashrc
 fi
+
+shopt -u nocasematch
 
 printf "$(GREEN "Install Successfully")\n"
 
