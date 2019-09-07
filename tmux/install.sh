@@ -16,7 +16,8 @@ _install_tmux_from_source() {
     cd $install_tmux_dir
     sh autogen.sh
     ./configure && make
-    cp $install_tmux_dir/tmux $HOME/bin
+    mkdir -p $HOME/.local/bin
+    cp $install_tmux_dir/tmux $HOME/.local/bin
     rm -rf $HOME/.tmp
     echo "Install tmux done."
 }
