@@ -28,7 +28,12 @@ brew install grep
 brew install openssh
 
 brew install cmake
+
+# Universal Ctags instead of Exuberant Ctags
 brew install ctags
+brew unlink ctags
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+
 brew install fzf
 $(brew --prefix)/opt/fzf/install
 brew install ripgrep
