@@ -35,7 +35,7 @@ brew unlink ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 brew install fzf
-$(brew --prefix)/opt/fzf/install
+$(brew --prefix)/opt/fzf/install --all
 brew install ripgrep
 brew install git
 brew install perl
@@ -49,7 +49,7 @@ brew install unrar
 brew install clang-format
 brew install global # gtags
 brew install aria2
-brew install llvm && sudo ln -sfn /usr/local/Cellar/llvm/*/bin/* ~/bin # clangd clang-format
+brew install llvm && sudo ln -sfn $(brew --prefix)/opt/llvm/bin/* $HOME/bin  # clangd clang-format
 brew install go
 
 brew cask install julia
@@ -58,7 +58,7 @@ brew cask install shadowsocksx-ng
 brew cask install alfred
 brew cask install qq
 brew cask install wechat
-brew cask install nutstore && open /usr/local/Caskroom/nutstore/latest &
+brew cask install nutstore && open $(brew --prefix)/Caskroom/nutstore/latest &
 brew cask install iina
 brew cask install teamviewer
 brew cask install google-chrome
