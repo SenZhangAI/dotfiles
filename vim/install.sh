@@ -54,37 +54,35 @@ install_vim8_from_src() {
 }
 
 install_vim() {
-    if command_not_installed vim; then
+    if command_not_installed vim && command_not_installed nvim; then
         case $SYSTEM in
             Cygwin)
                 ;;
             CentOS)
                 #install_vim8_from_src
+                sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm || echo "ok"
+                sudo yum install -y python-devel python36 python36-devel neovim python3-neovim
 
+                curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+                sudo yum install -y nodejs
+                curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+                sudo yum install -y yarn
+
+                npm install -g neovim
+                yum install -y python36-setuptools
+                easy_install-3.6 pip
+                pip3 install neovim
+
+                sudo yum install -y epel-release
+                sudo yum install -y snapd
+                sudo systemctl enable --now snapd.socket
+                sudo ln -s /var/lib/snapd/snap /snap
+                ## Need reboot here when using real machine
+                sudo snap install clangd --classic
                 ;;
             *)
                 ;;
         esac
-    fi
-
-    if command_not_installed clang; then
-        smart_install clang
-    fi
-
-    if command_not_installed gcc; then
-        smart_install gcc
-    fi
-
-    if command_installed pip2; then
-        pip2 install neovim
-    fi
-
-    if command_installed pip3; then
-        pip3 install neovim
-    fi
-
-    if command_not_installed node; then
-        curl -sL install-node.now.sh/lts | bash
     fi
 }
 
