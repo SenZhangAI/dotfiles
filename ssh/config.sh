@@ -28,6 +28,9 @@ else
     printf "$(GREEN "Done")\n"
 fi
 
+# config ssh, for example persist ssh connect
+cp $base_dir/ssh_config $HOME/.ssh/config
+
 _copy=""
 if command_installed pbcopy; then
     _copy="pbcopy "
