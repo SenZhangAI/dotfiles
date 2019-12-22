@@ -96,6 +96,10 @@ if command_not_installed cabal; then
     stack install cabal-install
 fi
 
+# if command_not_installed intero; then
+#     stack install intero
+# fi
+
 install_nix
 
 if command_not_installed hie-wrapper; then
