@@ -23,7 +23,15 @@ case $OSTYPE in
         ;;
 esac
 
-install_vim_from_src() {
+install_vim8_from_src() {
+    yum install -y gcc gcc-c++ ruby ruby-devel lua lua-devel  \
+        ctags git python python-devel \
+        tcl-devel ncurses-devel \
+        perl perl-devel perl-ExtUtils-ParseXS \
+        perl-ExtUtils-CBuilder \
+        perl-ExtUtils-Embed
+
+
     _old_dir=$pwd
     mkdir -p /tmp
     cd /tmp
@@ -45,20 +53,13 @@ install_vim_from_src() {
     make install
 }
 
-check_dependent() {
+install_vim() {
     if command_not_installed vim; then
         case $SYSTEM in
             Cygwin)
                 ;;
             CentOS)
-                yum install -y gcc gcc-c++ ruby ruby-devel lua lua-devel  \
-                    ctags git python python-devel \
-                    tcl-devel ncurses-devel \
-                    perl perl-devel perl-ExtUtils-ParseXS \
-                    perl-ExtUtils-CBuilder \
-                    perl-ExtUtils-Embed
-
-                install_vim_from_src
+                #install_vim8_from_src
 
                 ;;
             *)
@@ -68,34 +69,6 @@ check_dependent() {
 
     if command_not_installed clang; then
         smart_install clang
-    fi
-
-    if command_not_installed python2; then
-        case $SYSTEM in
-            Cygwin)
-                smart_install python2
-                smart_install python27-devel
-                ;;
-            *)
-                ;;
-        esac
-    fi
-
-    if command_not_installed python3; then
-        case $SYSTEM in
-            Cygwin)
-                smart_install python3
-                smart_install python27-devel
-                ;;
-            CentOS)
-                sudo yum -y install epel-release
-                sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm || echo "ignore error"
-                sudo yum -y install python36u
-                sudo yum -y install python36u-pip
-                ;;
-            *)
-                ;;
-        esac
     fi
 
     if command_not_installed gcc; then
@@ -116,8 +89,6 @@ check_dependent() {
 }
 
 config_vim() {
-    check_dependent
-
     vim_dir=$HOME/.vim/vim
     if [ -d $vim_dir ]; then
         cd $vim_dir
@@ -134,6 +105,7 @@ config_vim() {
     return 0
 }
 
+install_vim
 config_vim
 
 # vim:sw=4
