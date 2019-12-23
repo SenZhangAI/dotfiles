@@ -2,7 +2,7 @@
 
 # Enables the sharing of multiple sessions over a single network connection
 Host *
-ServerAliveInterval 300
+ServerAliveInterval 120
 ServerAliveCountMax 2
 ControlMaster auto
 ControlPath ~/.ssh/%h-%p-%r
