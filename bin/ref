@@ -36,6 +36,9 @@ PRINT_INFO() {
     INFO 'ssh-config' 'https://www.ssh.com/ssh/config'
 
     INFO 'idea-livetemplate-var' 'https://www.jetbrains.com/help/idea/template-variables.html'
+
+    INFO 'docker-deamon' 'https://docs.docker.com/config/daemon/'
+    INFO 'docker-deamon-config' 'https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file'
     LINE
 }
 
