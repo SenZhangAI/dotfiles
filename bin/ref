@@ -39,6 +39,7 @@ PRINT_INFO() {
 
     INFO 'docker-deamon' 'https://docs.docker.com/config/daemon/'
     INFO 'docker-deamon-config' 'https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file'
+    INFO 'java-jdbc' 'https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm'
     LINE
 }
 
