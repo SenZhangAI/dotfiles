@@ -9,9 +9,10 @@ else
     return 0
 fi
 
+origin_base_dir=$base_dir
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
 source $base_dir/../config.sh
+base_dir=$origin_base_dir
 
 system_is() {
     if [[ $(uname -a 2>/dev/null) =~ $1 ]]; then

@@ -8,7 +8,7 @@ else
 fi
 
 origin_base_dir=$base_dir
-base_dir=$(dirname "${BASH_SOURCE[0]}")
+base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $base_dir/platform.sh
 source $base_dir/print.sh
 base_dir=$origin_base_dir
