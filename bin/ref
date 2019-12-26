@@ -29,17 +29,18 @@ INFO() {
 
 PRINT_INFO() {
     LINE
-    INFO 'springboot' 'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/'
-    INFO 'springboot-config' 'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/#boot-features-external-config'
-    INFO 'zookeeper' 'https://zookeeper.apache.org/doc/current/index.html'
+    INFO 'springboot'            'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/'
+    INFO 'springboot-config'     'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/#boot-features-external-config'
+    INFO 'zookeeper'             'https://zookeeper.apache.org/doc/current/index.html'
 
-    INFO 'ssh-config' 'https://www.ssh.com/ssh/config'
+    INFO 'ssh-config'            'https://www.ssh.com/ssh/config'
 
     INFO 'idea-livetemplate-var' 'https://www.jetbrains.com/help/idea/template-variables.html'
 
-    INFO 'docker-deamon' 'https://docs.docker.com/config/daemon/'
-    INFO 'docker-deamon-config' 'https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file'
-    INFO 'java-jdbc' 'https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm'
+    INFO 'docker-deamon'         'https://docs.docker.com/config/daemon/'
+    INFO 'docker-deamon-config'  'https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file'
+    INFO 'java-jdbc'             'https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm'
+    INFO 'mybatis'               'https://mybatis.org/mybatis-3/index.html'
     LINE
 }
 
