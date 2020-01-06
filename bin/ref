@@ -41,6 +41,8 @@ PRINT_INFO() {
     INFO 'springboot-config'     'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/#boot-features-external-config'
     INFO 'ssh-config'            'https://www.ssh.com/ssh/config'
     INFO 'zookeeper'             'https://zookeeper.apache.org/doc/current/index.html'
+    INFO 'spring-homepage'       'https://spring.io/projects'
+    INFO 'spring-test'           'https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html'
 
     LINE
 }

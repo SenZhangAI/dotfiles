@@ -54,7 +54,7 @@ brew install go
 
 brew cask install julia
 brew cask install iterm2
-brew cask install shadowsocksx-ng
+#brew cask install shadowsocksx-ng
 brew cask install alfred
 brew cask install qq
 brew cask install wechat

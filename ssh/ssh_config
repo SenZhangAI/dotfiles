@@ -12,14 +12,6 @@ Host Baidu2C4G
 hostname 106.13.40.175
 user root
 
-Host Baidu
-hostname 182.61.106.23
-user root
-
-Host BaiduTest
-hostname 182.61.106.23
-user test
-
 Host Ali2C4G
 hostname 47.97.104.236
 user root
