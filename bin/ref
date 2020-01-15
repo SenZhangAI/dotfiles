@@ -36,13 +36,14 @@ PRINT_INFO() {
     INFO 'java-jdbc'             'https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm'
     INFO 'maven-mirror'          'http://maven.apache.org/guides/mini/guide-mirror-settings.html'
     INFO 'maven-settings'        'http://maven.apache.org/ref/3.6.3/maven-settings/settings.html'
+    INFO 'maven-repository'      'https://mvnrepository.com/'
     INFO 'mybatis'               'https://mybatis.org/mybatis-3/index.html'
+    INFO 'spring-core'           'https://docs.spring.io/spring/docs/5.2.3.RELEASE/spring-framework-reference/core.html#spring-core'
+    INFO 'spring-test'           'https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html'
     INFO 'springboot'            'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/'
     INFO 'springboot-config'     'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/#boot-features-external-config'
     INFO 'ssh-config'            'https://www.ssh.com/ssh/config'
     INFO 'zookeeper'             'https://zookeeper.apache.org/doc/current/index.html'
-    INFO 'spring-homepage'       'https://spring.io/projects'
-    INFO 'spring-test'           'https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html'
 
     LINE
 }
