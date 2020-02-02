@@ -34,9 +34,10 @@ PRINT_INFO() {
     INFO 'docker-deamon-config'  'https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file'
     INFO 'idea-livetemplate-var' 'https://www.jetbrains.com/help/idea/template-variables.html'
     INFO 'java-jdbc'             'https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm'
+    INFO 'lsp-server-table'      'https://langserver.org/#implementations-server'
     INFO 'maven-mirror'          'http://maven.apache.org/guides/mini/guide-mirror-settings.html'
-    INFO 'maven-settings'        'http://maven.apache.org/ref/3.6.3/maven-settings/settings.html'
     INFO 'maven-repository'      'https://mvnrepository.com/'
+    INFO 'maven-settings'        'http://maven.apache.org/ref/3.6.3/maven-settings/settings.html'
     INFO 'mybatis'               'https://mybatis.org/mybatis-3/index.html'
     INFO 'spring-core'           'https://docs.spring.io/spring/docs/5.2.3.RELEASE/spring-framework-reference/core.html#spring-core'
     INFO 'spring-test'           'https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html'
@@ -44,6 +45,7 @@ PRINT_INFO() {
     INFO 'springboot-config'     'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/#boot-features-external-config'
     INFO 'ssh-config'            'https://www.ssh.com/ssh/config'
     INFO 'zookeeper'             'https://zookeeper.apache.org/doc/current/index.html'
+    INFO 'zsh-manual'            'http://zsh.sourceforge.net/Doc/Release/index.html'
 
     LINE
 }
