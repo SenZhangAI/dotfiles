@@ -39,6 +39,7 @@ PRINT_INFO() {
     INFO 'maven-repository'      'https://mvnrepository.com/'
     INFO 'maven-settings'        'http://maven.apache.org/ref/3.6.3/maven-settings/settings.html'
     INFO 'mybatis'               'https://mybatis.org/mybatis-3/index.html'
+    INFO 'sharding-jdbc'         'https://shardingsphere.apache.org/document/current/cn/overview/'
     INFO 'spring-core'           'https://docs.spring.io/spring/docs/5.2.3.RELEASE/spring-framework-reference/core.html#spring-core'
     INFO 'spring-test'           'https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html'
     INFO 'springboot'            'https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/'
