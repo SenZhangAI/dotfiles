@@ -25,7 +25,6 @@ brew unlink vim # unlink vim before installing macvim
 brew install macvim
 brew install neovim
 brew install grep
-brew install openssh
 
 brew install cmake
 
@@ -52,7 +51,7 @@ brew install aria2
 brew install llvm && sudo ln -sfn $(brew --prefix)/opt/llvm/bin/* $HOME/bin  # clangd clang-format
 brew install go
 
-brew cask install julia
+#brew cask install julia
 brew cask install iterm2
 #brew cask install shadowsocksx-ng
 brew cask install alfred
@@ -78,6 +77,9 @@ brew install ntfs-3g
 #brew install yarn
 #brew install ghc
 #brew cask install hammerspoon
+
+#brew tap homebrew/cask-versions
+#brew cask install homebrew/cask-versions/adoptopenjdk8
 
 #brew cask install kindle
 #brew cask install calibre
