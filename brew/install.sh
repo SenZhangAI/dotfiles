@@ -22,14 +22,14 @@ brew install wget
 
 # Install more recent versions of some macOS tools.
 brew unlink vim # unlink vim before installing macvim
-brew install macvim
+#brew install macvim
 brew install neovim
 brew install grep
 
 brew install cmake
 
 # Universal Ctags instead of Exuberant Ctags
-brew install ctags
+#brew install ctags
 brew unlink ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
