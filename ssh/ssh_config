@@ -7,6 +7,7 @@ ServerAliveCountMax 2
 ControlMaster auto
 ControlPath ~/.ssh/%h-%p-%r
 ControlPersist yes
+ForwardAgent yes
 
 Host Baidu2C4G
 hostname 106.13.40.175
@@ -16,7 +17,3 @@ Host Ali2C4G
 hostname 47.97.104.236
 user root
 
-Host Amazon
-hostname 54.180.124.184
-user ec2-user
-IdentityFile ~/.ssh/zs_amazon.pem
