@@ -70,6 +70,7 @@ brew install ntfs-3g
 
 ######################## OPTIONAL APPLICATION #########################
 #brew cask install flash-player
+#brew cask install v2rayu
 
 #brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
 #brew install aliwangwang

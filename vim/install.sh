@@ -63,7 +63,7 @@ install_vim() {
                 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm || echo "ok"
                 sudo yum install -y python-devel python36 python36-devel neovim python3-neovim
 
-                curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+                curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
                 sudo yum install -y nodejs
                 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
                 sudo yum install -y yarn
