@@ -2,12 +2,14 @@
 
 # Enables the sharing of multiple sessions over a single network connection
 Host *
-ServerAliveInterval 120
+ServerAliveInterval 60
 ServerAliveCountMax 2
 ControlMaster auto
 ControlPath ~/.ssh/%h-%p-%r
 ControlPersist yes
 ForwardAgent yes
+AddKeysToAgent yes
+UseKeychain yes
 
 Host Baidu2C4G
 hostname 106.13.40.175
@@ -17,3 +19,10 @@ Host Ali2C4G
 hostname 47.97.104.236
 user root
 
+Host MyHostName
+hostname 127.0.0.1
+user centos
+IdentityFile ~/.ssh/my_pen.pem
+ControlPersist 5h
+ServerAliveInterval 60
+#ProxyCommand corkscrew localhost 1087 %h %p
