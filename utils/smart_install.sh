@@ -7,11 +7,9 @@ else
     return 0
 fi
 
-origin_base_dir=$base_dir
-base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source $base_dir/platform.sh
-source $base_dir/print.sh
-base_dir=$origin_base_dir
+util_base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $util_base_dir/platform.sh
+source $util_base_dir/print.sh
 
 command_not_installed() {
     printf "%-48s" "Check command $1..."
@@ -72,4 +70,3 @@ auto_install() {
         smart_install $1
     fi
 }
-

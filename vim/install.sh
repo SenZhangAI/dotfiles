@@ -98,7 +98,7 @@ config_vim() {
     fi
     unset vim_dir
 
-    ./install.sh &
+    $HOME/.vim/vim/install.sh &
     wait
     return 0
 }
