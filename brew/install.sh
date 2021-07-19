@@ -51,63 +51,63 @@ brew install aria2
 brew install llvm && sudo ln -sfn $(brew --prefix)/opt/llvm/bin/* $HOME/bin  # clangd clang-format
 brew install go
 
-#brew cask install julia
-brew cask install iterm2
-#brew cask install shadowsocksx-ng
-brew cask install alfred
-brew cask install qq
-brew cask install wechat
-brew cask install nutstore && open $(brew --prefix)/Caskroom/nutstore/latest &
-brew cask install iina
-brew cask install teamviewer
-brew cask install google-chrome
-brew cask install thunder
+#brew install --cask julia
+brew install --cask iterm2
+#brew install --cask shadowsocksx-ng
+brew install --cask alfred
+brew install --cask qq
+brew install --cask wechat
+brew install --cask nutstore && open $(brew --prefix)/Caskroom/nutstore/latest &
+brew install --cask iina
+brew install --cask teamviewer
+brew install --cask google-chrome
+brew install --cask thunder
 
 ## NTFS Support for MAC
 ### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
-brew cask install osxfuse
+brew install --cask osxfuse
 brew install ntfs-3g
 
 ######################## OPTIONAL APPLICATION #########################
-#brew cask install flash-player
-#brew cask install v2rayu
+#brew install --cask flash-player
+#brew install --cask v2rayu
 
 #brew install gsmartcontrol ## a GUI app show S.M.A.R.T message of disk
 #brew install aliwangwang
 #brew install node
 #brew install yarn
 #brew install ghc
-#brew cask install hammerspoon
+#brew install --cask hammerspoon
 
 #brew tap homebrew/cask-versions
-#brew cask install homebrew/cask-versions/adoptopenjdk8
+#brew install --cask homebrew/cask-versions/adoptopenjdk8
 
-#brew cask install kindle
-#brew cask install calibre
+#brew install --cask kindle
+#brew install --cask calibre
 
 #brew install sqlite
 #brew install mysqlworkbench
 #brew install mycli
-#brew cask install sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
+#brew install --cask sequel-pro ## the newest version is better, see https://sequelpro.com/test-builds
 
 #brew install protobuf
-#brew cask install visual-studio-code ## too slow
-#brew cask install goland
+#brew install --cask visual-studio-code ## too slow
+#brew install --cask goland
 #brew install ruby
 #brew install nim
-#brew cask install rubymine
-#brew cask install clion
-#brew cask install pycharm-ce
-#brew cask install phpstorm
+#brew install --cask rubymine
+#brew install --cask clion
+#brew install --cask pycharm-ce
+#brew install --cask phpstorm
 
-#brew cask install virtualbox
-#brew cask install virtualbox-extension-pack
+#brew install --cask virtualbox
+#brew install --cask virtualbox-extension-pack
 
-#brew cask install gitkraken
-#brew cask install keycaskr ## a keystroke visualizer
-#brew cask install switchhosts
+#brew install --cask gitkraken
+#brew install --cask keycaskr ## a keystroke visualizer
+#brew install --cask switchhosts
 
-#brew cask install vagrant
+#brew install --cask vagrant
 #vagrant plugin install vagrant-vbguest
 
 #######################################################################
