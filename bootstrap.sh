@@ -74,7 +74,7 @@ init_install_config() {
     elif system_is Darwin;then
         if command_not_installed brew; then
             printf "%-48s" "[Install] install brew..."
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             printf "$(GREEN "Done")\n"
         fi
         if command_not_installed git; then
