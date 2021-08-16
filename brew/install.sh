@@ -54,19 +54,19 @@ brew install go
 #brew install --cask julia
 brew install --cask iterm2
 #brew install --cask shadowsocksx-ng
-brew install --cask alfred
+#brew install --cask alfred
 brew install --cask qq
 brew install --cask wechat
 brew install --cask nutstore && open $(brew --prefix)/Caskroom/nutstore/latest &
 brew install --cask iina
-brew install --cask teamviewer
+#brew install --cask teamviewer
 brew install --cask google-chrome
 brew install --cask thunder
 
 ## NTFS Support for MAC
 ### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
-brew install --cask osxfuse
-brew install ntfs-3g
+#brew install --cask osxfuse
+#brew install ntfs-3g
 
 ######################## OPTIONAL APPLICATION #########################
 #brew install --cask flash-player
