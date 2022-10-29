@@ -2,14 +2,7 @@
 
 # using proxy
 #export ALL_PROXY=http://127.0.0.1:1087
-
-echo "[Config] change mirrors for Homebrew..."
-#see https://mirrors.ustc.edu.cn
-cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-cask.git
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
 # disable homebrew update, it's too slow!
 export HOMEBREW_NO_AUTO_UPDATE=true
@@ -62,6 +55,7 @@ brew install --cask iina
 #brew install --cask teamviewer
 brew install --cask google-chrome
 brew install --cask thunder
+brew install --cask snipaste
 
 ## NTFS Support for MAC
 ### see https://devstudioonline.com/article/enable-ntfs-file-system-in-mac-os-mojave
