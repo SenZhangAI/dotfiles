@@ -34,7 +34,7 @@ case $SYSTEM in
         sudo systemctl start docker
 
         sudo yum -y install epel-release python-pip
-        sodo pip install --upgrade pip
+        sudo pip install --upgrade pip
         pip install docker-compose
         docker-compose -version
         ;;
