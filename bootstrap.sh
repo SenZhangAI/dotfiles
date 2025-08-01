@@ -84,7 +84,6 @@ init_install_config() {
         if [ -f $HOME/.local/dotfiles/spec/macOS/.brew-update ]; then
             export HOMEBREW_NO_AUTO_UPDATE=true
         else
-            brew tap homebrew/cask
             brew update
             brew upgrade
         fi
@@ -155,7 +154,7 @@ install_git_wapper() {
         mv git.exe $BIN/git
     fi
 }
-install_git_wapper
+#install_git_wapper
 
 _set_go_env_for_cygwin() {
     batfile=cygwin_set_go_env.bat
